@@ -1,0 +1,1090 @@
+{
+  "destinations": [
+    {
+      "name": "大理古城",
+      "pinyin": "Dali Gucheng",
+      "location": "云南省大理白族自治州大理市",
+      "transportation_from_chengdu": {
+        "flight": {
+          "duration": "约1.5小时（成都双流机场直飞大理机场）",
+          "cost_range": "淡季约400-600元，旺季约700-1200元",
+          "pros": "最快速的交通方式，适合时间紧张的旅客；直飞无需中转",
+          "cons": "机票价格波动大，旺季可能较贵；大理机场距市区约30公里"
+        },
+        "high_speed_train": {
+          "duration": "约8-11小时（需在昆明中转）",
+          "cost_range": "约500-700元（二等座）",
+          "pros": "舒适度较高，票价相对稳定；可欣赏沿途风光",
+          "cons": "耗时较长，需中转；昆明到大理段为普通火车"
+        },
+        "self_driving": {
+          "duration": "约12-16小时",
+          "cost_range": "过路费约500元+油费约500-600元，总计约1000-1200元",
+          "pros": "自由度高，可随时停车拍照；适合家庭出行",
+          "cons": "路况复杂，部分路段蜿蜒；驾驶疲劳度高；环洱海公路常年修路易堵车"
+        },
+        "bus": {
+          "duration": "约10-14小时",
+          "cost_range": "约200-300元",
+          "pros": "价格最便宜；可直接到达大理古城",
+          "cons": "耗时最长；舒适度较低；中途需停车休息"
+        }
+      },
+      "food_recommendations": {
+        "specialty_dishes": [
+          {
+            "name": "大理砂锅鱼",
+            "average_price": "60-80元/人",
+            "reason": "大理传统名菜，以洱海鱼为主料，配以火腿、香菇等食材炖煮，味道鲜美"
+          },
+          {
+            "name": "永平黄焖鸡",
+            "average_price": "50-70元/人",
+            "reason": "大理特色菜肴，鸡肉鲜嫩多汁，香味浓郁，是当地待客佳品"
+          },
+          {
+            "name": "野生菌火锅",
+            "average_price": "80-120元/人",
+            "reason": "云南特产，各种野生菌类涮煮，汤鲜味美，是大理必尝特色"
+          },
+          {
+            "name": "孔雀宴手抓饭",
+            "average_price": "60-80元/人",
+            "reason": "傣族特色美食，多种菜品搭配用手抓食，体验民族风情"
+          },
+          {
+            "name": "酸辣鱼",
+            "average_price": "50-70元/人",
+            "reason": "洱海特色鱼肴，酸辣口味开胃，佐餐佳品"
+          }
+        ],
+        "snacks": [
+          {
+            "name": "烤乳扇",
+            "price": "10-15元/串",
+            "reason": "大理特色小吃，牛奶制品烤制，奶香浓郁"
+          },
+          {
+            "name": "凉虾",
+            "price": "5-10元/碗",
+            "reason": "大理传统甜品，清凉解暑，Q弹爽口"
+          },
+          {
+            "name": "稀豆粉",
+            "price": "8-15元/碗",
+            "reason": "大理特色早餐，豌豆粉制成，配以调料鲜香可口"
+          },
+          {
+            "name": "炸洋芋",
+            "price": "8-12元/份",
+            "reason": "云南常见小吃，土豆炸至金黄，外酥里嫩"
+          },
+          {
+            "name": "桂花元宵",
+            "price": "10-15元/碗",
+            "reason": "传统甜品，元宵配以桂花糖浆，香甜软糯"
+          }
+        ],
+        "value_restaurants": [
+          {
+            "name": "瑞丰园",
+            "average_price": "50-70元/人",
+            "location": "感通寺脚下",
+            "reason": "老牌餐厅，稀豆粉闻名，菜品地道性价比高"
+          },
+          {
+            "name": "顾氏私房菜",
+            "average_price": "60-80元/人",
+            "location": "大理古城内",
+            "reason": "傣族菜代表，招牌火炖鱼味道一绝"
+          },
+          {
+            "name": "大理方舟胖子·我在大理等你",
+            "average_price": "70-90元/人",
+            "location": "人民路下段498号",
+            "reason": "菌汤火锅闻名，颜值与美味并存"
+          },
+          {
+            "name": "浮娴小锅饭",
+            "average_price": "40-60元/人",
+            "location": "束河古镇",
+            "reason": "云南民俗风味，价格实惠，味道地道"
+          },
+          {
+            "name": "云雪丽丨古城口茶马古道文化特色餐厅",
+            "average_price": "50-70元/人",
+            "location": "古城口十字路口",
+            "reason": "位置便利，性价比高，服务态度好"
+          }
+        ]
+      },
+      "hotel_recommendations": {
+        "economy": [
+          {
+            "name": "全季酒店(大理古城店)",
+            "price_range": "200-350元/晚",
+            "location": "大理古城南门附近",
+            "advantages": "品牌连锁，品质保证；闹中取静；充电桩、健身室、洗衣房设施齐全；免费停车"
+          },
+          {
+            "name": "汉庭酒店(大理古城店)",
+            "price_range": "150-280元/晚",
+            "location": "大理古城周边",
+            "advantages": "经济实惠；位置便利；服务周到"
+          },
+          {
+            "name": "丽枫酒店(大理古城店)",
+            "price_range": "200-320元/晚",
+            "location": "大理古城洱海门",
+            "advantages": "4楼楼顶可看苍山；院子可停车30余辆；早餐丰富"
+          }
+        ],
+        "mid_range": [
+          {
+            "name": "大理古城城际酒店",
+            "price_range": "350-500元/晚",
+            "location": "大理古城洱海门旁边",
+            "advantages": "位置极佳；免费停车、机场班车；新开业设施新"
+          },
+          {
+            "name": "玉景潭叠翠北苑酒店(大理古城店)",
+            "price_range": "300-450元/晚",
+            "location": "古城南门附近",
+            "advantages": "闹中取静；免费停车；自助早餐；新中式风格"
+          },
+          {
+            "name": "椿林阁精品酒店(大理古城店)",
+            "price_range": "280-420元/晚",
+            "location": "古城对面",
+            "advantages": "交通便利；拍照出片；禅意风格；日落美景"
+          }
+        ],
+        "luxury": [
+          {
+            "name": "大理桃溪梦蝶秘境庄园",
+            "price_range": "800-1500元/晚",
+            "location": "古城北门",
+            "advantages": "古城热门榜第一；管家服务；免费迷你吧；庄园别墅体验"
+          },
+          {
+            "name": "海天之恋酒店(大理洱海S弯生态廊道)",
+            "price_range": "600-1000元/晚",
+            "location": "洱海S弯生态廊道",
+            "advantages": "洱海美景；拍照出片；免费水果；亲子主题房"
+          },
+          {
+            "name": "大理麓椿花园酒店",
+            "price_range": "500-800元/晚",
+            "location": "苍山脚下",
+            "advantages": "背靠苍山面朝洱海；赏樱酒店；管家服务；豪华装修"
+          }
+        ]
+      }
+    },
+    {
+      "name": "丽江古城",
+      "pinyin": "Lijiang Gucheng",
+      "location": "云南省丽江市古城区",
+      "transportation_from_chengdu": {
+        "flight": {
+          "duration": "约1.5小时（成都双流机场直飞丽江三义机场）",
+          "cost_range": "淡季约300-500元，旺季约600-1000元",
+          "pros": "最快捷便利；机场大巴直达古城；航班较多",
+          "cons": "旺季机票价格较高；需提前预订"
+        },
+        "high_speed_train": {
+          "duration": "约8-10小时（成都到昆明转丽江，或成都直达丽江）",
+          "cost_range": "约500-700元",
+          "pros": "舒适度高；票价相对稳定；可欣赏沿途风光",
+          "cons": "耗时较长；部分班次需中转"
+        },
+        "self_driving": {
+          "duration": "约10-14小时",
+          "cost_range": "过路费约400-500元+油费约400-500元，总计约800-1000元",
+          "pros": "自由度高；沿途可游览西昌、泸沽湖等景点",
+          "cons": "山路较多；驾驶疲劳；部分路段复杂"
+        },
+        "bus": {
+          "duration": "约12-16小时",
+          "cost_range": "约250-350元",
+          "pros": "价格实惠；可直接到达丽江古城",
+          "cons": "耗时最长；舒适度较低"
+        }
+      },
+      "food_recommendations": {
+        "specialty_dishes": [
+          {
+            "name": "过桥米线",
+            "average_price": "30-60元/人",
+            "reason": "云南代表美食，汤鲜料多，体验独特吃法"
+          },
+          {
+            "name": "纳西烤肉",
+            "average_price": "50-70元/人",
+            "reason": "丽江特色菜，猪肉烤制，香气扑鼻"
+          },
+          {
+            "name": "鸡豆凉粉",
+            "average_price": "15-25元/人",
+            "reason": "丽江传统小吃，凉粉配以调料，清爽可口"
+          },
+          {
+            "name": "汽锅鸡",
+            "average_price": "60-80元/人",
+            "reason": "云南名菜，汤鲜肉嫩，营养丰富"
+          },
+          {
+            "name": "腊排骨火锅",
+            "average_price": "60-80元/人",
+            "reason": "丽江特色火锅，腊排骨配以蔬菜，味道浓郁"
+          }
+        ],
+        "snacks": [
+          {
+            "name": "丽江粑粑",
+            "price": "5-10元/个",
+            "reason": "纳西族传统小吃，香脆可口"
+          },
+          {
+            "name": "米灌肠",
+            "price": "15-25元/份",
+            "reason": "丽江特色小吃，猪血糯米制成"
+          },
+          {
+            "name": "酥油茶",
+            "price": "10-20元/杯",
+            "reason": "藏族传统饮品，可体验当地文化"
+          },
+          {
+            "name": "鲜花饼",
+            "price": "5-15元/个",
+            "reason": "云南特色，玫瑰花瓣制作，香甜软糯"
+          },
+          {
+            "name": "酸奶",
+            "price": "10-20元/杯",
+            "reason": "当地自制酸奶，口味独特"
+          }
+        ],
+        "value_restaurants": [
+          {
+            "name": "木屿·废墟餐厅",
+            "average_price": "70-90元/人",
+            "location": "束河古镇",
+            "reason": "综艺节目拍摄地，新派云南菜"
+          },
+          {
+            "name": "樱花餐厅",
+            "average_price": "60-80元/人",
+            "location": "丽江古城内",
+            "reason": "民族风情云南餐厅，环境特色"
+          },
+          {
+            "name": "滇西王子·梦迴丽江",
+            "average_price": "70-100元/人",
+            "location": "丽江古城",
+            "reason": "本土特色品牌，口碑良好"
+          },
+          {
+            "name": "九歌米线",
+            "average_price": "25-40元/人",
+            "location": "经济开发区",
+            "reason": "价格实惠，米线正宗"
+          },
+          {
+            "name": "田村酸汤牦牛肉",
+            "average_price": "50-70元/人",
+            "location": "经济开发区",
+            "reason": "酸汤牦牛肉特色，口味独特"
+          }
+        ]
+      },
+      "hotel_recommendations": {
+        "economy": [
+          {
+            "name": "汉庭酒店(丽江古城店)",
+            "price_range": "150-280元/晚",
+            "location": "丽江古城周边",
+            "advantages": "品牌连锁；经济实惠；位置便利"
+          },
+          {
+            "name": "如家酒店(丽江古城南门店)",
+            "price_range": "120-250元/晚",
+            "location": "古城南门",
+            "advantages": "价格实惠；交通便利；服务周到"
+          },
+          {
+            "name": "7天酒店(丽江古城大水车店)",
+            "price_range": "100-200元/晚",
+            "location": "古城北门",
+            "advantages": "经济型首选；位置方便；性价比高"
+          }
+        ],
+        "mid_range": [
+          {
+            "name": "丽江德庭花园酒店(古城区大水车店)",
+            "price_range": "300-450元/晚",
+            "location": "古城北门大水车",
+            "advantages": "自助早餐；雪山景；免费停车；拍照出片"
+          },
+          {
+            "name": "官房大酒店(丽江古城店)",
+            "price_range": "350-500元/晚",
+            "location": "丽江古城",
+            "advantages": "窗外就是玉龙雪山；免费停车；自助早餐"
+          },
+          {
+            "name": "宽宿︱东方美学庭院(丽江古城忠义市场店)",
+            "price_range": "280-420元/晚",
+            "location": "古城忠义市场",
+            "advantages": "花园景观；巨幕投影；阳台房；免费咖啡"
+          }
+        ],
+        "luxury": [
+          {
+            "name": "花自在•雪山逸享•空中花园360°高空度假别院",
+            "price_range": "800-1500元/晚",
+            "location": "古城内四方街",
+            "advantages": "古城内位置极佳；纳西风情；下午茶；免费专车接机"
+          },
+          {
+            "name": "半山丽舍丨Serenity Haven设计师观雪山全景美宿",
+            "price_range": "600-1200元/晚",
+            "location": "丽江狮子山",
+            "advantages": "俯看古城全景；雪山景观；管家服务；拍照出片"
+          },
+          {
+            "name": "丽江Fog Gallery山岚溪畔·烟雨长廊古城全景酒店",
+            "price_range": "500-900元/晚",
+            "location": "古城木府南门",
+            "advantages": "一览古城魅力；古镇夜景；江景阳台房"
+          }
+        ]
+      }
+    },
+    {
+      "name": "西昌邛海",
+      "pinyin": "Xichang Qionghai",
+      "location": "四川省凉山彝族自治州西昌市",
+      "transportation_from_chengdu": {
+        "flight": {
+          "duration": "约40分钟（成都双流机场直飞西昌青山机场）",
+          "cost_range": "淡季约200-400元，旺季约400-1000元",
+          "pros": "最快捷；40分钟即达；航班直飞",
+          "cons": "航班较少；旺季票价波动大"
+        },
+        "high_speed_train": {
+          "duration": "约3小时（成都直达西昌西站）",
+          "cost_range": "约149元（二等座）",
+          "pros": "便捷舒适；票价稳定；新成昆铁路使行程缩短一半",
+          "cons": "高铁站距市区有一定距离"
+        },
+        "self_driving": {
+          "duration": "约8-10小时",
+          "cost_range": "过路费约300元+油费约300-400元，总计约600-700元",
+          "pros": "自由度高；可环邛海游览；沿途风景优美",
+          "cons": "耗时较长；山路弯道多；需注意驾驶安全"
+        },
+        "bus": {
+          "duration": "约6-8小时",
+          "cost_range": "约150-200元",
+          "pros": "价格实惠；可直接到达西昌",
+          "cons": "耗时较长；舒适度一般"
+        }
+      },
+      "food_recommendations": {
+        "specialty_dishes": [
+          {
+            "name": "会理鸡火丝",
+            "average_price": "30-50元/人",
+            "reason": "会理地区传统名菜，鸡肉与火腿丝搭配，特色风味"
+          },
+          {
+            "name": "西昌火盆烧烤",
+            "average_price": "60-80元/人",
+            "reason": "当地特色烧烤方式，创新涮烤和瓮烤方式"
+          },
+          {
+            "name": "石锅鱼",
+            "average_price": "70-90元/人",
+            "reason": "邛海特色，鱼肉鲜嫩，石锅保温"
+          },
+          {
+            "name": "邛海醉虾",
+            "average_price": "50-70元/人",
+            "reason": "邛海特色，活虾用酒醉制，鲜美独特"
+          },
+          {
+            "name": "牛羊杂粉",
+            "average_price": "20-35元/人",
+            "reason": "当地特色小吃，汤鲜味美"
+          }
+        ],
+        "snacks": [
+          {
+            "name": "凉粉",
+            "price": "10-20元/份",
+            "reason": "四川经典小吃，多种调味方式"
+          },
+          {
+            "name": "炸洋芋",
+            "price": "8-15元/份",
+            "reason": "常见小吃，西昌街头随处可见"
+          },
+          {
+            "name": "手摊凉粉",
+            "price": "10-18元/份",
+            "reason": "当地特色，凉粉配以特制调料"
+          },
+          {
+            "name": "烧烤串串",
+            "price": "15-30元/把",
+            "reason": "火盆烧烤的精髓，夜市必备"
+          },
+          {
+            "name": "甜皮鸭",
+            "price": "30-50元/只",
+            "reason": "西昌特色，鸭肉皮甜肉嫩"
+          }
+        ],
+        "value_restaurants": [
+          {
+            "name": "正宗会理鸡火丝(龙眼井店)",
+            "average_price": "30-45元/人",
+            "location": "市中心龙眼井",
+            "reason": "传统老店，价格实惠，口味正宗"
+          },
+          {
+            "name": "老号李小肠·特色烧烤园(航天路店)",
+            "average_price": "60-80元/人",
+            "location": "市中心航天路",
+            "reason": "特色烧烤，口碑良好"
+          },
+          {
+            "name": "熊氏牛羊杂粉(龙眼井总店)",
+            "average_price": "20-35元/人",
+            "location": "市中心龙眼井",
+            "reason": "当地知名老店，味道正宗"
+          },
+          {
+            "name": "胡四哥特色火盆烧烤(总店)",
+            "average_price": "50-70元/人",
+            "location": "市中心",
+            "reason": "创新涮烤方式，工业风环境"
+          },
+          {
+            "name": "月谷酒庄",
+            "average_price": "80-120元/人",
+            "location": "邛海附近",
+            "reason": "法式庄园环境，泰式海鲜火锅特色"
+          }
+        ]
+      },
+      "hotel_recommendations": {
+        "economy": [
+          {
+            "name": "西昌邛海月客栈",
+            "price_range": "150-280元/晚",
+            "location": "邛海湿地",
+            "advantages": "2024年新开业；性价比高；位置便利"
+          },
+          {
+            "name": "西昌好人家农家乐",
+            "price_range": "100-200元/晚",
+            "location": "邛海东度假区",
+            "advantages": "农家乐体验；价格实惠；亲近自然"
+          },
+          {
+            "name": "星程西昌邛海湿地公园酒店",
+            "price_range": "180-300元/晚",
+            "location": "邛海湿地公园旁",
+            "advantages": "早餐丰富；面食口味极佳；位置优越"
+          }
+        ],
+        "mid_range": [
+          {
+            "name": "西昌邛海17度漫心酒店",
+            "price_range": "300-450元/晚",
+            "location": "邛海17度核心商圈",
+            "advantages": "步行5分钟直达万达广场；免费停车场；位置便利"
+          },
+          {
+            "name": "西昌邛海湿地美居酒店",
+            "price_range": "280-420元/晚",
+            "location": "万达广场/火把广场",
+            "advantages": "国际品牌；舒适度高；性价比好"
+          },
+          {
+            "name": "西昌邛海赛波府酒店",
+            "price_range": "350-500元/晚",
+            "location": "海滨路123号",
+            "advantages": "邛海边位置；设施齐全；评分4.5"
+          }
+        ],
+        "luxury": [
+          {
+            "name": "西昌邛海湾柏樾酒店",
+            "price_range": "800-1500元/晚",
+            "location": "邛海东度假区",
+            "advantages": "高端度假酒店；邛海美景；配套设施完善"
+          },
+          {
+            "name": "西昌邛海宾馆",
+            "price_range": "400-700元/晚",
+            "location": "邛海边",
+            "advantages": "老牌国营酒店；位置极佳；望月楼新装修"
+          },
+          {
+            "name": "麓塵酒店(西昌大石板社区古村商业街)",
+            "price_range": "500-800元/晚",
+            "location": "大石板社区",
+            "advantages": "高空11-12层；俯瞰城区和邛海；电竞配置"
+          }
+        ]
+      }
+    },
+    {
+      "name": "九寨沟",
+      "pinyin": "Jiuzhaigou",
+      "location": "四川省阿坝藏族羌族自治州九寨沟县",
+      "transportation_from_chengdu": {
+        "flight": {
+          "duration": "约1小时（成都双流机场直飞九寨黄龙机场）",
+          "cost_range": "淡季约300-500元，旺季约500-800元",
+          "pros": "最快速；机票价格相对高铁便宜；适合时间紧张旅客",
+          "cons": "机场距景区较远（约90公里）；需再换乘大巴；航班较少"
+        },
+        "high_speed_train": {
+          "duration": "约2小时（成都东站直达黄龙九寨站）+大巴约1.5小时",
+          "cost_range": "二等座约141元，一等座约225元；大巴约50元",
+          "pros": "2024年新开通；票价稳定；舒适度高；换乘便利",
+          "cons": "需再转乘大巴到景区；高铁站距景区约92公里"
+        },
+        "self_driving": {
+          "duration": "约8-10小时",
+          "cost_range": "过路费约300元+油费约300-400元，总计约600-700元",
+          "pros": "自由度最高；可沿途游览黄龙等景点；随停随拍",
+          "cons": "山路复杂；高原驾驶需注意；部分路段条件较差"
+        },
+        "bus": {
+          "duration": "约8-10小时",
+          "cost_range": "约168元",
+          "pros": "价格适中；可直接到达沟口客运站",
+          "cons": "耗时最长；舒适度较低；中途需休息"
+        }
+      },
+      "food_recommendations": {
+        "specialty_dishes": [
+          {
+            "name": "牦牛肉汤锅",
+            "average_price": "60-80元/人",
+            "reason": "藏式特色火锅，原汁原味，汤鲜肉嫩"
+          },
+          {
+            "name": "冷水鱼/冷锅鱼",
+            "average_price": "70-90元/人",
+            "reason": "九寨沟特色水产，肉质鲜嫩"
+          },
+          {
+            "name": "藏式土火锅",
+            "average_price": "60-80元/人",
+            "reason": "藏族传统火锅，风味独特"
+          },
+          {
+            "name": "铁板烤肉",
+            "average_price": "50-70元/人",
+            "reason": "藏式特色烹饪方式"
+          },
+          {
+            "name": "青稞饼/酥油茶",
+            "average_price": "20-40元/人",
+            "reason": "藏族传统主食和饮品"
+          }
+        ],
+        "snacks": [
+          {
+            "name": "烤鱼",
+            "price": "30-50元/条",
+            "reason": "冷水鱼烤制，外焦里嫩"
+          },
+          {
+            "name": "羊肉串/羊排",
+            "price": "20-40元/串",
+            "reason": "老兵烧烤招牌"
+          },
+          {
+            "name": "酸奶",
+            "price": "15-25元/杯",
+            "reason": "当地自制酸奶，口味独特"
+          },
+          {
+            "name": "核桃花凉拌菜",
+            "price": "20-30元/份",
+            "reason": "当地特色野菜"
+          },
+          {
+            "name": "青稞酒",
+            "price": "20-40元/杯",
+            "reason": "藏族传统饮品"
+          }
+        ],
+        "value_restaurants": [
+          {
+            "name": "卡万金特色藏餐",
+            "average_price": "50-70元/人",
+            "location": "三队飞机场路梦幻九寨对面",
+            "reason": "评分5.0，藏餐代表"
+          },
+          {
+            "name": "乡土川菜馆",
+            "average_price": "40-60元/人",
+            "location": "九寨沟沟口兴兴超市旁巷内",
+            "reason": "性价比之选，川菜地道"
+          },
+          {
+            "name": "老兵烧烤-九寨特色",
+            "average_price": "50-70元/人",
+            "location": "301省道棠中酒店路上",
+            "reason": "83条评价，羊排、烤鱼必点"
+          },
+          {
+            "name": "川菜人家",
+            "average_price": "40-60元/人",
+            "location": "漳扎镇格桑宾馆斜对面",
+            "reason": "价格实惠，口味家常"
+          },
+          {
+            "name": "阿妈家特色藏餐",
+            "average_price": "50-70元/人",
+            "location": "301省道漳扎镇彭丰村",
+            "reason": "评分5.0，藏餐体验正宗"
+          }
+        ]
+      },
+      "hotel_recommendations": {
+        "economy": [
+          {
+            "name": "汉庭酒店(九寨沟店)",
+            "price_range": "150-280元/晚",
+            "location": "南坪镇上街10号",
+            "advantages": "2024年新开业；评分4.7；品牌连锁"
+          },
+          {
+            "name": "九寨沟林水间轻奢美宿",
+            "price_range": "250-400元/晚",
+            "location": "近龙康",
+            "advantages": "轻奢风格；评分高；位置便利"
+          },
+          {
+            "name": "九寨沟德尔塔酒店",
+            "price_range": "200-350元/晚",
+            "location": "县城",
+            "advantages": "性价比高；位置便利"
+          }
+        ],
+        "mid_range": [
+          {
+            "name": "九寨沟A·HOTEL",
+            "price_range": "300-500元/晚",
+            "location": "文荟路66号",
+            "advantages": "位置便利；设施完善；服务周到"
+          },
+          {
+            "name": "九寨沟三墨酒店",
+            "price_range": "350-550元/晚",
+            "location": "漳扎镇隆康村",
+            "advantages": "离景区车程8分钟；清幽环境；富氧空气"
+          },
+          {
+            "name": "九寨沟曦楠民宿",
+            "price_range": "280-450元/晚",
+            "location": "九寨沟景区附近",
+            "advantages": "2024年新开业；评分4.5；性价比高"
+          }
+        ],
+        "luxury": [
+          {
+            "name": "日赛谷丽思卡尔顿隐世酒店",
+            "price_range": "2000-5000元/晚",
+            "location": "近中查沟",
+            "advantages": "国际顶级品牌；隐世度假体验"
+          },
+          {
+            "name": "九寨沟天源豪生度假酒店",
+            "price_range": "800-1500元/晚",
+            "location": "近千古情",
+            "advantages": "度假酒店；设施完善；位置优越"
+          },
+          {
+            "name": "九寨绿发希尔顿度假酒店",
+            "price_range": "1000-2000元/晚",
+            "location": "九寨华美胜地旅游度假区",
+            "advantages": "国际品牌；背靠中查村；宁静悠远"
+          }
+        ]
+      }
+    },
+    {
+      "name": "稻城亚丁",
+      "pinyin": "Daocheng Yading",
+      "location": "四川省甘孜藏族自治州稻城县",
+      "transportation_from_chengdu": {
+        "flight": {
+          "duration": "约2小时（成都双流机场直飞稻城亚丁机场）",
+          "cost_range": "淡季约400-600元，旺季约600-1200元",
+          "pros": "最快速；直飞稻城；适合时间紧张旅客",
+          "cons": "机票价格高；机场海拔高（4411米）易高反；距景区较远"
+        },
+        "high_speed_train": {
+          "duration": "无直达高铁，需到康定后转车（约4-5小时到康定）+自驾或大巴",
+          "cost_range": "成都到康定约200-300元+后续交通",
+          "pros": "可到康定后包车或租车前往沿途风景美",
+          "cons": "需多次换乘；耗时较长；不如飞机便捷"
+        },
+        "self_driving": {
+          "duration": "约13-15小时（约700-800公里）",
+          "cost_range": "过路费约300-400元+油费约400-500元，总计约700-900元",
+          "pros": "自由度最高；可沿途游览康定、新都桥等景点；想停就停",
+          "cons": "山路复杂；高原驾驶难度大；部分路段条件差；驾驶疲劳"
+        },
+        "bus": {
+          "duration": "约22-24小时（两天）",
+          "cost_range": "约250-350元",
+          "pros": "价格最便宜；直达稻城县",
+          "cons": "耗时最长；需在康定住宿一晚；舒适度低"
+        }
+      },
+      "food_recommendations": {
+        "specialty_dishes": [
+          {
+            "name": "牦牛肉火锅",
+            "average_price": "70-100元/人",
+            "reason": "高原特色，肉质鲜嫩，滋补养生"
+          },
+          {
+            "name": "腊猪蹄汤锅",
+            "average_price": "60-80元/人",
+            "reason": "当地特色，汤浓肉香"
+          },
+          {
+            "name": "藏香猪",
+            "average_price": "80-120元/人",
+            "reason": "高原特色，肉质独特"
+          },
+          {
+            "name": "高原鳕鱼",
+            "average_price": "60-80元/人",
+            "reason": "亚丁特色鱼种，肉质细嫩"
+          },
+          {
+            "name": "藏式土鸡汤",
+            "average_price": "50-70元/人",
+            "reason": "滋补养生，高原特色"
+          }
+        ],
+        "snacks": [
+          {
+            "name": "青稞饼",
+            "price": "10-20元/个",
+            "reason": "藏族传统主食"
+          },
+          {
+            "name": "酥油茶",
+            "price": "15-25元/杯",
+            "reason": "藏族传统饮品，可缓解高反"
+          },
+          {
+            "name": "酸奶",
+            "price": "15-25元/杯",
+            "reason": "当地自制酸奶"
+          },
+          {
+            "name": "牦牛肉干",
+            "price": "50-80元/袋",
+            "reason": "高原特色，可作为伴手礼"
+          },
+          {
+            "name": "藏式麻花",
+            "price": "15-25元/份",
+            "reason": "特色小吃"
+          }
+        ],
+        "value_restaurants": [
+          {
+            "name": "百家乐饭店",
+            "average_price": "40-60元/人",
+            "location": "稻城县城",
+            "reason": "当地风味餐厅榜No.1，评分5.0"
+          },
+          {
+            "name": "舌尖上的腊猪蹄汤锅·牦牛火锅",
+            "average_price": "60-80元/人",
+            "location": "稻城县城",
+            "reason": "评分4.6，腊猪蹄汤锅特色"
+          },
+          {
+            "name": "火塘人家文化主题餐厅",
+            "average_price": "70-90元/人",
+            "location": "稻城县城",
+            "reason": "文化主题体验，氛围独特"
+          },
+          {
+            "name": "藏酷火锅",
+            "average_price": "60-80元/人",
+            "location": "稻城县城",
+            "reason": "藏式火锅代表"
+          },
+          {
+            "name": "阿妈味道餐厅",
+            "average_price": "50-70元/人",
+            "location": "稻城县城",
+            "reason": "家常味道，价格实惠"
+          }
+        ]
+      },
+      "hotel_recommendations": {
+        "economy": [
+          {
+            "name": "稻城ACE假期酒店(稻城亚丁景区店)",
+            "price_range": "150-280元/晚",
+            "location": "稻城亚丁游客中心",
+            "advantages": "评分4.6；性价比高；位置便利"
+          },
+          {
+            "name": "香巴拉民宿(稻城亚丁游客中心店)",
+            "price_range": "120-250元/晚",
+            "location": "稻城亚丁游客中心",
+            "advantages": "原汁原味藏族风格；价格实惠"
+          },
+          {
+            "name": "稻城亚丁平常客客栈",
+            "price_range": "100-200元/晚",
+            "location": "稻城县城",
+            "advantages": "经济实惠；位置便利"
+          }
+        ],
+        "mid_range": [
+          {
+            "name": "匠心·千秋雪(稻城亚丁景区店)",
+            "price_range": "300-500元/晚",
+            "location": "亚丁景区",
+            "advantages": "2024年新开业；评分4.8；位置优越"
+          },
+          {
+            "name": "止山下酒店(稻城亚丁景区亚丁村店)",
+            "price_range": "350-550元/晚",
+            "location": "亚丁村",
+            "advantages": "2024年新开业；评分4.7；景区内位置"
+          },
+          {
+            "name": "稻城栖山悦雪山酒店(亚丁景区亚丁村店)",
+            "price_range": "300-500元/晚",
+            "location": "亚丁村",
+            "advantages": "评分4.7；雪山景观"
+          }
+        ],
+        "luxury": [
+          {
+            "name": "松赞亚丁山居",
+            "price_range": "1500-3000元/晚",
+            "location": "亚丁村",
+            "advantages": "顶级精品酒店；评分4.7；绝美景观"
+          },
+          {
+            "name": "稻城亚丁摩梵星辰酒店",
+            "price_range": "800-1500元/晚",
+            "location": "亚丁景区",
+            "advantages": "高端度假体验；星空观测佳"
+          },
+          {
+            "name": "知白艺术酒店(稻城亚丁景区亚丁村店)",
+            "price_range": "600-1200元/晚",
+            "location": "亚丁村",
+            "advantages": "艺术设计；独特体验"
+          }
+        ]
+      }
+    },
+    {
+      "name": "桂林阳朔",
+      "pinyin": "Guilin Yangshuo",
+      "location": "广西壮族自治区桂林市阳朔县",
+      "transportation_from_chengdu": {
+        "flight": {
+          "duration": "约1.5小时（成都双流机场直飞桂林两江机场）",
+          "cost_range": "淡季约300-500元，旺季约500-900元",
+          "pros": "最快速；机场大巴可到阳朔（约1.5小时）",
+          "cons": "需再转车到阳朔；航班时间受限"
+        },
+        "high_speed_train": {
+          "duration": "约5-6小时（成都东站直达桂林站/桂林北站）+桂林到阳朔约1小时",
+          "cost_range": "约400-600元",
+          "pros": "舒适度高；票价稳定；可直达桂林再转阳朔",
+          "cons": "耗时较长；需中转"
+        },
+        "self_driving": {
+          "duration": "约10-12小时（约800公里）",
+          "cost_range": "过路费约400-500元+油费约400-500元，总计约800-1000元",
+          "pros": "自由度最高；可沿途游览；自驾游热门路线",
+          "cons": "耗时较长；长途驾驶疲劳"
+        },
+        "bus": {
+          "duration": "约12-15小时",
+          "cost_range": "约300-400元",
+          "pros": "价格适中；可直接到阳朔",
+          "cons": "耗时最长；舒适度一般"
+        }
+      },
+      "food_recommendations": {
+        "specialty_dishes": [
+          {
+            "name": "啤酒鱼",
+            "average_price": "60-80元/人",
+            "reason": "阳朔招牌菜，以啤酒烹调鲜鱼，风味独特"
+          },
+          {
+            "name": "桂林米粉",
+            "average_price": "15-30元/人",
+            "reason": "桂林代表美食，阳朔随处可见"
+          },
+          {
+            "name": "田螺酿",
+            "average_price": "40-60元/人",
+            "reason": "阳朔特色，螺肉酿制"
+          },
+          {
+            "name": "漓江虾",
+            "average_price": "50-70元/人",
+            "reason": "漓江特色水产"
+          },
+          {
+            "name": "荔浦芋头扣肉",
+            "average_price": "50-70元/人",
+            "reason": "桂林传统名菜"
+          }
+        ],
+        "snacks": [
+          {
+            "name": "艾叶粑粑",
+            "price": "5-10元/个",
+            "reason": "阳朔传统小吃，艾叶制成"
+          },
+          {
+            "name": "油茶",
+            "price": "10-20元/碗",
+            "reason": "桂林特色饮品"
+          },
+          {
+            "name": "桂花糕",
+            "price": "10-20元/份",
+            "reason": "桂林特产，桂花香甜"
+          },
+          {
+            "name": "马蹄糕",
+            "price": "8-15元/份",
+            "reason": "传统甜品"
+          },
+          {
+            "name": "松花糖",
+            "price": "15-25元/袋",
+            "reason": "阳朔特色糖果"
+          }
+        ],
+        "value_restaurants": [
+          {
+            "name": "大师傅金奖啤酒鱼(西街口总店)",
+            "average_price": "60-80元/人",
+            "location": "西街口",
+            "reason": "评分4.7，上过《天天饮食》，啤酒鱼正宗"
+          },
+          {
+            "name": "春记公司",
+            "average_price": "50-70元/人",
+            "location": "西街/阳朔公园区",
+            "reason": "评分4.3，价格实惠"
+          },
+          {
+            "name": "江景餐厅",
+            "average_price": "60-80元/人",
+            "location": "西街漓江边",
+            "reason": "漓江风光；位置优越"
+          },
+          {
+            "name": "椿记烧鹅(阳朔店)",
+            "average_price": "50-70元/人",
+            "location": "阳朔县城",
+            "reason": "本地著名烧鹅连锁，皮脆肉嫩"
+          },
+          {
+            "name": "一尺稻田咖啡",
+            "average_price": "30-50元/人",
+            "location": "遇龙河国家级旅游度假区",
+            "reason": "田园风光；休闲好去处"
+          }
+        ]
+      },
+      "hotel_recommendations": {
+        "economy": [
+          {
+            "name": "喜见酒店(阳朔西街店)",
+            "price_range": "150-280元/晚",
+            "location": "阳朔西街",
+            "advantages": "2024年新开业；评分4.8；位置便利"
+          },
+          {
+            "name": "阳朔山与城度假酒店(千古情西街店)",
+            "price_range": "180-320元/晚",
+            "location": "千古情/西街",
+            "advantages": "评分4.6；位置便利；性价比高"
+          },
+          {
+            "name": "遇龙家誉酒店(阳朔遇龙河景区金龙巡游店)",
+            "price_range": "200-350元/晚",
+            "location": "遇龙河景区",
+            "advantages": "2024年新开业；评分4.8；田园风光"
+          }
+        ],
+        "mid_range": [
+          {
+            "name": "阳朔水云阁酒店",
+            "price_range": "350-550元/晚",
+            "location": "阳朔镇",
+            "advantages": "河畔景观；位置便利"
+          },
+          {
+            "name": "阳朔新西街国际度假酒店",
+            "price_range": "300-500元/晚",
+            "location": "西街",
+            "advantages": "国际度假酒店；位置优越"
+          },
+          {
+            "name": "碧莲江景大酒店(阳朔西街漓江店)",
+            "price_range": "350-600元/晚",
+            "location": "西街漓江边",
+            "advantages": "江景房；位置极佳"
+          }
+        ],
+        "luxury": [
+          {
+            "name": "阳朔悦榕庄",
+            "price_range": "2000-5000元/晚",
+            "location": "福利镇",
+            "advantages": "国际顶级品牌；漓江山水；极致体验"
+          },
+          {
+            "name": "阳朔糖舍度假酒店",
+            "price_range": "1500-3000元/晚",
+            "location": "阳朔县城",
+            "advantages": "知名设计酒店；老糖厂改造；独特体验"
+          },
+          {
+            "name": "阳朔水岸花园酒店",
+            "price_range": "800-1500元/晚",
+            "location": "遇龙河",
+            "advantages": "河畔度假；环境优美"
+          }
+        ]
+      }
+    }
+  ]
+}

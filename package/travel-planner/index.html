@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成都出发·当季游 - 精选旅行目的地</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0EA5E9;
+            --primary-dark: #0284C7;
+            --secondary: #10B981;
+            --bg-light: #F8FAFC;
+            --bg-white: #FFFFFF;
+            --text-primary: #334155;
+            --text-secondary: #64748B;
+            --accent-hot: #F43F5E;
+            --accent-warm: #F59E0B;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+        .header {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            height: 60px; display: flex; align-items: center;
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--primary); font-weight: 700; font-size: 1.25rem; }
+        .logo-icon { font-size: 1.5rem; }
+        .logo-text { color: var(--text-primary); }
+        .back-btn {
+            display: none; align-items: center; gap: 4px;
+            padding: 8px 16px; background: var(--bg-white);
+            border: 1px solid #E2E8F0; border-radius: 12px;
+            color: var(--text-primary); font-size: 0.9rem; cursor: pointer;
+        }
+        .back-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .hero {
+            padding: 120px 0 64px;
+            background: linear-gradient(135deg, #E0F2FE 0%, #F0FDF4 50%, #FEF3C7 100%);
+            text-align: center;
+        }
+        .hero-title { font-size: 2.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
+        .hero-subtitle { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 24px; }
+        .season-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: white; padding: 8px 24px; border-radius: 24px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-weight: 500; color: var(--secondary);
+        }
+        .destinations-section { padding: 48px 0 64px; }
+        .section-header { text-align: center; margin-bottom: 24px; }
+        .section-title { font-size: 1.75rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+        .section-desc { color: var(--text-secondary); font-size: 0.95rem; }
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 1024px) { .destinations-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) {
+            .destinations-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 1.75rem; }
+        }
+        .destination-card {
+            background: var(--bg-white); border-radius: 16px; overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .destination-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px rgba(0,0,0,0.1); }
+        .card-image-wrapper { position: relative; width: 100%; padding-top: 62.5%; overflow: hidden; }
+        .card-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        .card-hot-badge {
+            position: absolute; top: 16px; right: 16px;
+            background: linear-gradient(135deg, var(--accent-hot), #E11D48);
+            color: white; padding: 4px 12px; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 600;
+        }
+        .card-content { padding: 24px; }
+        .card-title { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .card-title-en { font-size: 0.85rem; color: #94A3B8; font-weight: 400; }
+        .card-desc { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 16px; }
+        .card-highlight { display: flex; flex-wrap: wrap; gap: 8px; }
+        .highlight-tag { background: linear-gradient(135deg, #E0F2FE, #DBEAFE); color: #0284C7; padding: 4px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 500; }
+        .detail-page { display: none; padding-top: 60px; }
+        .detail-hero { position: relative; height: 400px; overflow: hidden; }
+        .detail-cover-img { width: 100%; height: 100%; object-fit: cover; }
+        .detail-hero-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 48px 0 24px;
+        }
+        .detail-title { font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 8px; }
+        .detail-desc { font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+        .detail-highlight { display: flex; flex-wrap: wrap; gap: 8px; }
+        .detail-highlight .highlight-tag { background: rgba(255,255,255,0.2); color: white; }
+        .detail-content { padding: 48px 0; }
+        .detail-section { margin-bottom: 64px; }
+        .detail-section-title { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .section-intro { color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; }
+        .transport-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        @media (max-width: 1024px) { .transport-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .transport-grid { grid-template-columns: 1fr; } }
+        .transport-card {
+            background: var(--bg-white); border-radius: 12px; padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #E2E8F0;
+        }
+        .transport-type { font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; }
+        .transport-info p { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #E2E8F0; font-size: 0.9rem; }
+        .info-label { color: var(--text-secondary); }
+        .info-value { font-weight: 600; color: var(--text-primary); }
+        .pros-item { color: var(--secondary); font-size: 0.85rem; margin-bottom: 4px; }
+        .cons-item { color: var(--accent-hot); font-size: 0.85rem; }
+        .itinerary-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+        .itinerary-tab {
+            padding: 8px 24px; background: var(--bg-white); border: 1px solid #E2E8F0;
+            border-radius: 12px; color: var(--text-secondary); font-size: 0.9rem; cursor: pointer;
+        }
+        .itinerary-tab:hover { border-color: var(--primary); color: var(--primary); }
+        .itinerary-tab.active { background: var(--primary); border-color: var(--primary); color: white; }
+        .itinerary-list { display: flex; flex-direction: column; gap: 24px; }
+        .itinerary-card { background: var(--bg-white); border-radius: 16px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .itinerary-header { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 24px; }
+        .itinerary-days { font-size: 1.5rem; font-weight: 700; }
+        .itinerary-best-for { font-size: 0.85rem; opacity: 0.9; }
+        .itinerary-body { padding: 24px; }
+        .itinerary-highlights { display: flex; flex-wrap: wrap; gap: 8px; }
+        .itinerary-highlight-tag { background: #F0FDF4; color: #059669; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; }
+        .food-category { background: var(--bg-white); border-radius: 16px; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .food-category-title { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .food-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+        .food-item { display: flex; justify-content: space-between; align-items: center; padding: 16px; background: var(--bg-light); border-radius: 12px; }
+        .food-name { font-weight: 600; color: var(--text-primary); font-size: 0.95rem; }
+        .food-reason { font-size: 0.8rem; color: var(--text-secondary); }
+        .food-price { font-weight: 700; color: var(--accent-warm); white-space: nowrap; }
+        .hotel-level { background: var(--bg-white); border-radius: 16px; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .level-badge { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; }
+        .level-badge.economy { background: linear-gradient(135deg, #86EFAC, #4ADE80); color: #166534; }
+        .level-badge.mid { background: linear-gradient(135deg, #93C5FD, #60A5FA); color: #1E40AF; }
+        .level-badge.luxury { background: linear-gradient(135deg, #FDBA74, #FB923C); color: #9A3412; }
+        .hotel-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+        .hotel-item { padding: 24px; background: var(--bg-light); border-radius: 12px; }
+        .hotel-name { font-weight: 700; color: var(--text-primary); font-size: 1rem; margin-bottom: 8px; }
+        .hotel-location { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px; }
+        .hotel-price { font-size: 1.1rem; font-weight: 700; color: var(--accent-warm); margin-bottom: 8px; }
+        .hotel-features { display: flex; flex-wrap: wrap; gap: 4px; }
+        .hotel-feature { font-size: 0.75rem; padding: 3px 8px; background: #E0F2FE; color: #0284C7; border-radius: 6px; }
+        .back-to-top {
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            background: var(--primary); color: white; border: none; border-radius: 50%;
+            font-size: 1.25rem; cursor: pointer; box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .footer { background: #1E293B; color: rgba(255,255,255,0.7); padding: 32px 0; text-align: center; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .destination-card { animation: fadeIn 0.5s ease forwards; }
+        .destination-card:nth-child(1) { animation-delay: 0.1s; }
+        .destination-card:nth-child(2) { animation-delay: 0.2s; }
+        .destination-card:nth-child(3) { animation-delay: 0.3s; }
+        .destination-card:nth-child(4) { animation-delay: 0.4s; }
+        .destination-card:nth-child(5) { animation-delay: 0.5s; }
+        .destination-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="#" class="logo" onclick="showHome(); return false;">
+                <span class="logo-icon">✈</span>
+                <span class="logo-text">成都出发·当季游</span>
+            </a>
+            <button class="back-btn" id="backBtn" onclick="showHome()">
+                <span>←</span>
+                <span>返回首页</span>
+            </button>
+        </div>
+    </header>
+
+    <main id="homePage" class="home-page">
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">当季精选·最佳目的地</h1>
+                <p class="hero-subtitle">从成都出发，探索中国最美风景</p>
+                <div class="season-tag">
+                    <span>🌸</span>
+                    <span>春季推荐</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="destinations-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">热门目的地</h2>
+                    <p class="section-desc">按推荐热度排序</p>
+                </div>
+                <div class="destinations-grid" id="destinationsGrid"></div>
+            </div>
+        </section>
+    </main>
+
+    <main id="detailPage" class="detail-page">
+        <section class="detail-hero">
+            <img id="detailCover" class="detail-cover-img" src="" alt="">
+            <div class="detail-hero-overlay">
+                <div class="container">
+                    <h1 id="detailTitle" class="detail-title"></h1>
+                    <p id="detailDesc" class="detail-desc"></p>
+                    <div id="detailHighlight" class="detail-highlight"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="detail-content">
+            <div class="container">
+                <section class="detail-section" id="transportSection">
+                    <h2 class="detail-section-title"><span>🚄</span>交通方式</h2>
+                    <p class="section-intro">从成都出发</p>
+                    <div class="transport-grid" id="transportGrid"></div>
+                </section>
+
+                <section class="detail-section" id="itinerarySection">
+                    <h2 class="detail-section-title"><span>🗺️</span>游玩规划</h2>
+                    <div class="itinerary-tabs" id="itineraryTabs">
+                        <button class="itinerary-tab active" data-days="all">全部方案</button>
+                    </div>
+                    <div class="itinerary-list" id="itineraryList"></div>
+                </section>
+
+                <section class="detail-section" id="foodSection">
+                    <h2 class="detail-section-title"><span>🍜</span>餐饮推荐</h2>
+                    <div class="food-category">
+                        <h3 class="food-category-title"><span>🏆</span>当地特色菜</h3>
+                        <ul class="food-list" id="localFood"></ul>
+                    </div>
+                    <div class="food-category">
+                        <h3 class="food-category-title"><span>🔥</span>人气小吃</h3>
+                        <ul class="food-list" id="snacks"></ul>
+                    </div>
+                    <div class="food-category">
+                        <h3 class="food-category-title"><span>💰</span>高性价比餐厅</h3>
+                        <ul class="food-list" id="valueFood"></ul>
+                    </div>
+                </section>
+
+                <section class="detail-section" id="hotelSection">
+                    <h2 class="detail-section-title"><span>🏨</span>酒店选择</h2>
+                    <div class="hotel-level">
+                        <span class="level-badge economy">经济型</span>
+                        <div class="hotel-list" id="economyHotels" style="margin-top:16px;"></div>
+                    </div>
+                    <div class="hotel-level">
+                        <span class="level-badge mid">中端</span>
+                        <div class="hotel-list" id="midHotels" style="margin-top:16px;"></div>
+                    </div>
+                    <div class="hotel-level">
+                        <span class="level-badge luxury">高端</span>
+                        <div class="hotel-list" id="luxuryHotels" style="margin-top:16px;"></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 成都出发·当季游 | 让旅行更简单</p>
+        </div>
+    </footer>
+
+    <script>
+    const destinations = [
+      {
+        id: 1,
+        name: "大理古城",
+        englishName: "Dali Ancient City",
+        popularityScore: 98,
+        coverImage: "images/dali-ancient-city-yunnan-china-travel-scenery.jpg",
+        description: "风花雪月的大理，苍山洱海的浪漫",
+        highlight: "古城漫步 · 洱海骑行 · 苍山索道",
+        transport: {
+          methods: [
+            { type: "飞机", duration: "约1.5小时（成都双流机场直飞大理机场）", cost: "淡季约400-600元，旺季约700-1200元", pros: ["最快速的交通方式，适合时间紧张的旅客", "直飞无需中转"], cons: ["机票价格波动大，旺季可能较贵", "大理机场距市区约30公里"] },
+            { type: "高铁", duration: "约8-11小时（需在昆明中转）", cost: "约500-700元（二等座）", pros: ["舒适度较高，票价相对稳定", "可欣赏沿途风光"], cons: ["耗时较长，需中转", "昆明到大理段为普通火车"] },
+            { type: "自驾", duration: "约12-16小时", cost: "过路费约500元+油费约500-600元，总计约1000-1200元", pros: ["自由度高，可随时停车拍照", "适合家庭出行"], cons: ["路况复杂，部分路段蜿蜒", "驾驶疲劳度高", "环洱海公路常年修路易堵车"] },
+            { type: "大巴", duration: "约10-14小时", cost: "约200-300元", pros: ["价格最便宜", "可直接到达大理古城"], cons: ["耗时最长", "舒适度较低", "中途需停车休息"] }
+          ]
+        },
+        itineraries: [
+          { days: 2, title: "短途精华游", highlights: ["大理古城漫步", "洱海西岸骑行", "三塔寺祈福"], bestFor: "周末短途旅行者" },
+          { days: 4, title: "常规深度游", highlights: ["苍山索道登顶", "双廊古镇", "洱海东岸自驾", "喜洲古镇"], bestFor: "休闲度假游客" },
+          { days: 7, title: "全景深度游", highlights: ["环洱海全程", "沙溪古镇", "巍山古城", "苍山徒步"], bestFor: "摄影爱好者和深度游玩家" }
+        ],
+        food: {
+          localSpecialties: [
+            { name: "大理砂锅鱼", price: "60-80元/人", reason: "大理传统名菜，以洱海鱼为主料，配以火腿、香菇等食材炖煮，味道鲜美" },
+            { name: "永平黄焖鸡", price: "50-70元/人", reason: "大理特色菜肴，鸡肉鲜嫩多汁，香味浓郁，是当地待客佳品" },
+            { name: "野生菌火锅", price: "80-120元/人", reason: "云南特产，各种野生菌类涮煮，汤鲜味美，是大理必尝特色" },
+            { name: "孔雀宴手抓饭", price: "60-80元/人", reason: "傣族特色美食，多种菜品搭配用手抓食，体验民族风情" },
+            { name: "酸辣鱼", price: "50-70元/人", reason: "洱海特色鱼肴，酸辣口味开胃，佐餐佳品" }
+          ],
+          popularSnacks: [
+            { name: "烤乳扇", price: "10-15元/串", reason: "大理特色小吃，牛奶制品烤制，奶香浓郁" },
+            { name: "凉虾", price: "5-10元/碗", reason: "大理传统甜品，清凉解暑，Q弹爽口" },
+            { name: "稀豆粉", price: "8-15元/碗", reason: "大理特色早餐，豌豆粉制成，配以调料鲜香可口" },
+            { name: "炸洋芋", price: "8-12元/份", reason: "云南常见小吃，土豆炸至金黄，外酥里嫩" },
+            { name: "桂花元宵", price: "10-15元/碗", reason: "传统甜品，元宵配以桂花糖浆，香甜软糯" }
+          ],
+          valueRestaurants: [
+            { name: "瑞丰园", price: "50-70元/人", location: "感通寺脚下", reason: "老牌餐厅，稀豆粉闻名，菜品地道性价比高" },
+            { name: "顾氏私房菜", price: "60-80元/人", location: "大理古城内", reason: "傣族菜代表，招牌火炖鱼味道一绝" },
+            { name: "大理方舟胖子·我在大理等你", price: "70-90元/人", location: "人民路下段498号", reason: "菌汤火锅闻名，颜值与美味并存" },
+            { name: "浮娴小锅饭", price: "40-60元/人", location: "束河古镇", reason: "云南民俗风味，价格实惠，味道地道" },
+            { name: "云雪丽丨古城口茶马古道文化特色餐厅", price: "50-70元/人", location: "古城口十字路口", reason: "位置便利，性价比高，服务态度好" }
+          ]
+        },
+        hotels: {
+          economy: [
+            { name: "全季酒店(大理古城店)", price: "200-350元/晚", location: "大理古城南门附近", advantage: "品牌连锁，品质保证；闹中取静；充电桩、健身室、洗衣房设施齐全；免费停车" },
+            { name: "汉庭酒店(大理古城店)", price: "150-280元/晚", location: "大理古城周边", advantage: "经济实惠；位置便利；服务周到" },
+            { name: "丽枫酒店(大理古城店)", price: "200-320元/晚", location: "大理古城洱海门", advantage: "4楼楼顶可看苍山；院子可停车30余辆；早餐丰富" }
+          ],
+          midRange: [
+            { name: "大理古城城际酒店", price: "350-500元/晚", location: "大理古城洱海门旁边", advantage: "位置极佳；免费停车、机场班车；新开业设施新" },
+            { name: "玉景潭叠翠北苑酒店(大理古城店)", price: "300-450元/晚", location: "古城南门附近", advantage: "闹中取静；免费停车；自助早餐；新中式风格" },
+            { name: "椿林阁精品酒店(大理古城店)", price: "280-420元/晚", location: "古城对面", advantage: "交通便利；拍照出片；禅意风格；日落美景" }
+          ],
+          luxury: [
+            { name: "大理桃溪梦蝶秘境庄园", price: "800-1500元/晚", location: "古城北门", advantage: "古城热门榜第一；管家服务；免费迷你吧；庄园别墅体验" },
+            { name: "海天之恋酒店(大理洱海S弯生态廊道)", price: "600-1000元/晚", location: "洱海S弯生态廊道", advantage: "洱海美景；拍照出片；免费水果；亲子主题房" },
+            { name: "大理麓椿花园酒店", price: "500-800元/晚", location: "苍山脚下", advantage: "背靠苍山面朝洱海；赏樱酒店；管家服务；豪华装修" }
+          ]
+        }
+      },
+      {
+        id: 2,
+        name: "丽江古城",
+        englishName: "Lijiang Ancient City",
+        popularityScore: 95,
+        coverImage: "images/lijiang-ancient-town-yunnan-china-travel-scenery.jpg",
+        description: "纳西古韵，小桥流水的柔软时光",
+        highlight: "古城夜景 · 玉龙雪山 · 泸沽湖",
+        transport: {
+          methods: [
+            { type: "飞机", duration: "约1.5小时（成都双流机场直飞丽江三义机场）", cost: "淡季约300-500元，旺季约600-1000元", pros: ["最快捷便利", "机场大巴直达古城", "航班较多"], cons: ["旺季机票价格较高", "需提前预订"] },
+            { type: "高铁", duration: "约8-10小时（成都到昆明转丽江，或成都直达丽江）", cost: "约500-700元", pros: ["舒适度高", "票价相对稳定", "可欣赏沿途风光"], cons: ["耗时较长", "部分班次需中转"] },
+            { type: "自驾", duration: "约10-14小时", cost: "过路费约400-500元+油费约400-500元，总计约800-1000元", pros: ["自由度高", "沿途可游览西昌、泸沽湖等景点"], cons: ["山路较多", "驾驶疲劳", "部分路段复杂"] },
+            { type: "大巴", duration: "约12-16小时", cost: "约250-350元", pros: ["价格实惠", "可直接到达丽江古城"], cons: ["耗时最长", "舒适度较低"] }
+          ]
+        },
+        itineraries: [
+          { days: 2, title: "古城休闲游", highlights: ["丽江古城漫步", "四方街夜景", "束河古镇"], bestFor: "周末游客" },
+          { days: 4, title: "雪山深度游", highlights: ["玉龙雪山索道", "蓝月谷", "泸沽湖环湖", "印象丽江演出"], bestFor: "经典线路游" },
+          { days: 7, title: "全景探秘游", highlights: ["老君山徒步", "泸沽湖深度", "香格里拉串联", "纳西文化体验"], bestFor: "深度探索者" }
+        ],
+        food: {
+          localSpecialties: [
+            { name: "过桥米线", price: "30-60元/人", reason: "云南代表美食，汤鲜料多，体验独特吃法" },
+            { name: "纳西烤肉", price: "50-70元/人", reason: "丽江特色菜，猪肉烤制，香气扑鼻" },
+            { name: "鸡豆凉粉", price: "15-25元/人", reason: "丽江传统小吃，凉粉配以调料，清爽可口" },
+            { name: "汽锅鸡", price: "60-80元/人", reason: "云南名菜，汤鲜肉嫩，营养丰富" },
+            { name: "腊排骨火锅", price: "60-80元/人", reason: "丽江特色火锅，腊排骨配以蔬菜，味道浓郁" }
+          ],
+          popularSnacks: [
+            { name: "丽江粑粑", price: "5-10元/个", reason: "纳西族传统小吃，香脆可口" },
+            { name: "米灌肠", price: "15-25元/份", reason: "丽江特色小吃，猪血糯米制成" },
+            { name: "酥油茶", price: "10-20元/杯", reason: "藏族传统饮品，可体验当地文化" },
+            { name: "鲜花饼", price: "5-15元/个", reason: "云南特色，玫瑰花瓣制作，香甜软糯" },
+            { name: "酸奶", price: "10-20元/杯", reason: "当地自制酸奶，口味独特" }
+          ],
+          valueRestaurants: [
+            { name: "木屿·废墟餐厅", price: "70-90元/人", location: "束河古镇", reason: "综艺节目拍摄地，新派云南菜" },
+            { name: "樱花餐厅", price: "60-80元/人", location: "丽江古城内", reason: "民族风情云南餐厅，环境特色" },
+            { name: "滇西王子·梦迴丽江", price: "70-100元/人", location: "丽江古城", reason: "本土特色品牌，口碑良好" },
+            { name: "九歌米线", price: "25-40元/人", location: "经济开发区", reason: "价格实惠，米线正宗" },
+            { name: "田村酸汤牦牛肉", price: "50-70元/人", location: "经济开发区", reason: "酸汤牦牛肉特色，口味独特" }
+          ]
+        },
+        hotels: {
+          economy: [
+            { name: "汉庭酒店(丽江古城店)", price: "150-280元/晚", location: "丽江古城周边", advantage: "品牌连锁；经济实惠；位置便利" },
+            { name: "如家酒店(丽江古城南门店)", price: "120-250元/晚", location: "古城南门", advantage: "价格实惠；交通便利；服务周到" },
+            { name: "7天酒店(丽江古城大水车店)", price: "100-200元/晚", location: "古城北门", advantage: "经济型首选；位置方便；性价比高" }
+          ],
+          midRange: [
+            { name: "丽江德庭花园酒店(古城区大水车店)", price: "300-450元/晚", location: "古城北门大水车", advantage: "自助早餐；雪山景；免费停车；拍照出片" },
+            { name: "官房大酒店(丽江古城店)", price: "350-500元/晚", location: "丽江古城", advantage: "窗外就是玉龙雪山；免费停车；自助早餐" },
+            { name: "宽宿︱东方美学庭院(丽江古城忠义市场店)", price: "280-420元/晚", location: "古城忠义市场", advantage: "花园景观；巨幕投影；阳台房；免费咖啡" }
+          ],
+          luxury: [
+            { name: "花自在•雪山逸享•空中花园360°高空度假别院", price: "800-1500元/晚", location: "古城内四方街", advantage: "古城内位置极佳；纳西风情；下午茶；免费专车接机" },
+            { name: "半山丽舍丨Serenity Haven设计师观雪山全景美宿", price: "600-1200元/晚", location: "丽江狮子山", advantage: "俯看古城全景；雪山景观；管家服务；拍照出片" },
+            { name: "丽江Fog Gallery山岚溪畔·烟雨长廊古城全景酒店", price: "500-900元/晚", location: "古城木府南门", advantage: "一览古城魅力；古镇夜景；江景阳台房" }
+          ]
+        }
+      },
+      {
+        id: 3,
+        name: "西昌邛海",
+        englishName: "Xichang Qionghai",
+        popularityScore: 92,
+        coverImage: "images/xichang-qionghai-lake-sichuan-china-panorama.jpg",
+        description: "川西明珠，阳光花城的浪漫湖景",
+        highlight: "邛海湿地 · 泸山登高 · 阳光康养",
+        transport: {
+          methods: [
+            { type: "飞机", duration: "约40分钟（成都双流机场直飞西昌青山机场）", cost: "淡季约200-400元，旺季约400-1000元", pros: ["最快捷", "40分钟即达", "航班直飞"], cons: ["航班较少", "旺季票价波动大"] },
+            { type: "高铁", duration: "约3小时（成都直达西昌西站）", cost: "约149元（二等座）", pros: ["便捷舒适", "票价稳定", "新成昆铁路使行程缩短一半"], cons: ["高铁站距市区有一定距离"] },
+            { type: "自驾", duration: "约8-10小时", cost: "过路费约300元+油费约300-400元，总计约600-700元", pros: ["自由度高", "可环邛海游览", "沿途风景优美"], cons: ["耗时较长", "山路弯道多", "需注意驾驶安全"] },
+            { type: "大巴", duration: "约6-8小时", cost: "约150-200元", pros: ["价格实惠", "可直接到达西昌"], cons: ["耗时较长", "舒适度一般"] }
+          ]
+        },
+        itineraries: [
+          { days: 2, title: "周末度假", highlights: ["邛海环湖", "泸山登山", "月色小镇"], bestFor: "周末短途" },
+          { days: 4, title: "康养休闲", highlights: ["湿地公园", "阳光康养", "美食之旅", "螺髻山"], bestFor: "休闲度假" }
+        ],
+        food: {
+          localSpecialties: [
+            { name: "会理鸡火丝", price: "30-50元/人", reason: "会理地区传统名菜，鸡肉与火腿丝搭配，特色风味" },
+            { name: "西昌火盆烧烤", price: "60-80元/人", reason: "当地特色烧烤方式，创新涮烤和瓮烤方式" },
+            { name: "石锅鱼", price: "70-90元/人", reason: "邛海特色，鱼肉鲜嫩，石锅保温" },
+            { name: "邛海醉虾", price: "50-70元/人", reason: "邛海特色，活虾用酒醉制，鲜美独特" },
+            { name: "牛羊杂粉", price: "20-35元/人", reason: "当地特色小吃，汤鲜味美" }
+          ],
+          popularSnacks: [
+            { name: "凉粉", price: "10-20元/份", reason: "四川经典小吃，多种调味方式" },
+            { name: "炸洋芋", price: "8-15元/份", reason: "常见小吃，西昌街头随处可见" },
+            { name: "手摊凉粉", price: "10-18元/份", reason: "当地特色，凉粉配以特制调料" },
+            { name: "烧烤串串", price: "15-30元/把", reason: "火盆烧烤的精髓，夜市必备" },
+            { name: "甜皮鸭", price: "30-50元/只", reason: "西昌特色，鸭肉皮甜肉嫩" }
+          ],
+          valueRestaurants: [
+            { name: "正宗会理鸡火丝(龙眼井店)", price: "30-45元/人", location: "市中心龙眼井", reason: "传统老店，价格实惠，口味正宗" },
+            { name: "老号李小肠·特色烧烤园(航天路店)", price: "60-80元/人", location: "市中心航天路", reason: "特色烧烤，口碑良好" },
+            { name: "熊氏牛羊杂粉(龙眼井总店)", price: "20-35元/人", location: "市中心龙眼井", reason: "当地知名老店，味道正宗" },
+            { name: "胡四哥特色火盆烧烤(总店)", price: "50-70元/人", location: "市中心", reason: "创新涮烤方式，工业风环境" },
+            { name: "月谷酒庄", price: "80-120元/人", location: "邛海附近", reason: "法式庄园环境，泰式海鲜火锅特色" }
+          ]
+        },
+        hotels: {
+          economy: [
+            { name: "西昌邛海月客栈", price: "150-280元/晚", location: "邛海湿地", advantage: "2024年新开业；性价比高；位置便利" },
+            { name: "西昌好人家农家乐", price: "100-200元/晚", location: "邛海东度假区", advantage: "农家乐体验；价格实惠；亲近自然" },
+            { name: "星程西昌邛海湿地公园酒店", price: "180-300元/晚", location: "邛海湿地公园旁", advantage: "早餐丰富；面食口味极佳；位置优越" }
+          ],
+          midRange: [
+            { name: "西昌邛海17度漫心酒店", price: "300-450元/晚", location: "邛海17度核心商圈", advantage: "步行5分钟直达万达广场；免费停车场；位置便利" },
+            { name: "西昌邛海湿地美居酒店", price: "280-420元/晚", location: "万达广场/火把广场", advantage: "国际品牌；舒适度高；性价比好" },
+            { name: "西昌邛海赛波府酒店", price: "350-500元/晚", location: "海滨路123号", advantage: "邛海边位置；设施齐全；评分4.5" }
+          ],
+          luxury: [
+            { name: "西昌邛海湾柏樾酒店", price: "800-1500元/晚", location: "邛海东度假区", advantage: "高端度假酒店；邛海美景；配套设施完善" },
+            { name: "西昌邛海宾馆", price: "400-700元/晚", location: "邛海边", advantage: "老牌国营酒店；位置极佳；望月楼新装修" },
+            { name: "麓塵酒店(西昌大石板社区古村商业街)", price: "500-800元/晚", location: "大石板社区", advantage: "高空11-12层；俯瞰城区和邛海；电竞配置" }
+          ]
+        }
+      },
+      {
+        id: 4,
+        name: "九寨沟",
+        englishName: "Jiuzhaigou",
+        popularityScore: 97,
+        coverImage: "images/jiuzhaigou-colorful-lake-sichuan-china.jpg",
+        description: "人间仙境，童话世界的五彩池",
+        highlight: "五花海 · 镜海 · 诺日朗瀑布",
+        transport: {
+          methods: [
+            { type: "飞机", duration: "约1小时（成都双流机场直飞九寨黄龙机场）", cost: "淡季约300-500元，旺季约500-800元", pros: ["最快速", "机票价格相对高铁便宜", "适合时间紧张旅客"], cons: ["机场距景区较远（约90公里）", "需再换乘大巴", "航班较少"] },
+            { type: "高铁", duration: "约2小时（成都东站直达黄龙九寨站）+大巴约1.5小时", cost: "二等座约141元，一等座约225元；大巴约50元", pros: ["2024年新开通", "票价稳定", "舒适度高", "换乘便利"], cons: ["需再转乘大巴到景区", "高铁站距景区约92公里"] },
+            { type: "自驾", duration: "约8-10小时", cost: "过路费约300元+油费约300-400元，总计约600-700元", pros: ["自由度最高", "可沿途游览黄龙等景点", "随停随拍"], cons: ["山路复杂", "高原驾驶需注意", "部分路段条件较差"] },
+            { type: "大巴", duration: "约8-10小时", cost: "约168元", pros: ["价格适中", "可直接到达沟口客运站"], cons: ["耗时最长", "舒适度较低", "中途需休息"] }
+          ]
+        },
+        itineraries: [
+          { days: 2, title: "精华速游", highlights: ["五花海", "镜海", "诺日朗", "五彩池"], bestFor: "时间有限" },
+          { days: 4, title: "深度全景", highlights: ["日则沟", "则查洼沟", "树正沟", "黄龙串联"], bestFor: "摄影爱好者" }
+        ],
+        food: {
+          localSpecialties: [
+            { name: "牦牛肉汤锅", price: "60-80元/人", reason: "藏式特色火锅，原汁原味，汤鲜肉嫩" },
+            { name: "冷水鱼/冷锅鱼", price: "70-90元/人", reason: "九寨沟特色水产，肉质鲜嫩" },
+            { name: "藏式土火锅", price: "60-80元/人", reason: "藏族传统火锅，风味独特" },
+            { name: "铁板烤肉", price: "50-70元/人", reason: "藏式特色烹饪方式" },
+            { name: "青稞饼/酥油茶", price: "20-40元/人", reason: "藏族传统主食和饮品" }
+          ],
+          popularSnacks: [
+            { name: "烤鱼", price: "30-50元/条", reason: "冷水鱼烤制，外焦里嫩" },
+            { name: "羊肉串/羊排", price: "20-40元/串", reason: "老兵烧烤招牌" },
+            { name: "酸奶", price: "15-25元/杯", reason: "当地自制酸奶，口味独特" },
+            { name: "核桃花凉拌菜", price: "20-30元/份", reason: "当地特色野菜" },
+            { name: "青稞酒", price: "20-40元/杯", reason: "藏族传统饮品" }
+          ],
+          valueRestaurants: [
+            { name: "卡万金特色藏餐", price: "50-70元/人", location: "三队飞机场路梦幻九寨对面", reason: "评分5.0，藏餐代表" },
+            { name: "乡土川菜馆", price: "40-60元/人", location: "九寨沟沟口兴兴超市旁巷内", reason: "性价比之选，川菜地道" },
+            { name: "老兵烧烤-九寨特色", price: "50-70元/人", location: "301省道棠中酒店路上", reason: "83条评价，羊排、烤鱼必点" },
+            { name: "川菜人家", price: "40-60元/人", location: "漳扎镇格桑宾馆斜对面", reason: "价格实惠，口味家常" },
+            { name: "阿妈家特色藏餐", price: "50-70元/人", location: "301省道漳扎镇彭丰村", reason: "评分5.0，藏餐体验正宗" }
+          ]
+        },
+        hotels: {
+          economy: [
+            { name: "汉庭酒店(九寨沟店)", price: "150-280元/晚", location: "南坪镇上街10号", advantage: "2024年新开业；评分4.7；品牌连锁" },
+            { name: "九寨沟林水间轻奢美宿", price: "250-400元/晚", location: "近龙康", advantage: "轻奢风格；评分高；位置便利" },
+            { name: "九寨沟德尔塔酒店", price: "200-350元/晚", location: "县城", advantage: "性价比高；位置便利" }
+          ],
+          midRange: [
+            { name: "九寨沟A·HOTEL", price: "300-500元/晚", location: "文荟路66号", advantage: "位置便利；设施完善；服务周到" },
+            { name: "九寨沟三墨酒店", price: "350-550元/晚", location: "漳扎镇隆康村", advantage: "离景区车程8分钟；清幽环境；富氧空气" },
+            { name: "九寨沟曦楠民宿", price: "280-450元/晚", location: "九寨沟景区附近", advantage: "2024年新开业；评分4.5；性价比高" }
+          ],
+          luxury: [
+            { name: "日赛谷丽思卡尔顿隐世酒店", price: "2000-5000元/晚", location: "近中查沟", advantage: "国际顶级品牌；隐世度假体验" },
+            { name: "九寨沟天源豪生度假酒店", price: "800-1500元/晚", location: "近千古情", advantage: "度假酒店；设施完善；位置优越" },
+            { name: "九寨绿发希尔顿度假酒店", price: "1000-2000元/晚", location: "九寨华美胜地旅游度假区", advantage: "国际品牌；背靠中查村；宁静悠远" }
+          ]
+        }
+      },
+      {
+        id: 5,
+        name: "稻城亚丁",
+        englishName: "Daocheng Yading",
+        popularityScore: 94,
+        coverImage: "images/daocheng-yading-sichuan-alpine-lake-mountains.jpg",
+        description: "蓝色星球上最后一片净土",
+        highlight: "牛奶海 · 五色海 · 冲古寺",
+        transport: {
+          methods: [
+            { type: "飞机", duration: "约2小时（成都双流机场直飞稻城亚丁机场）", cost: "淡季约400-600元，旺季约600-1200元", pros: ["最快速", "直飞稻城", "适合时间紧张旅客"], cons: ["机票价格高", "机场海拔高（4411米）易高反", "距景区较远"] },
+            { type: "高铁", duration: "无直达高铁，需到康定后转车（约4-5小时到康定）+自驾或大巴", cost: "成都到康定约200-300元+后续交通", pros: ["可到康定后包车或租车前往沿途风景美"], cons: ["需多次换乘", "耗时较长", "不如飞机便捷"] },
+            { type: "自驾", duration: "约13-15小时（约700-800公里）", cost: "过路费约300-400元+油费约400-500元，总计约700-900元", pros: ["自由度最高", "可沿途游览康定、新都桥等景点", "想停就停"], cons: ["山路复杂", "高原驾驶难度大", "部分路段条件差", "驾驶疲劳"] },
+            { type: "大巴", duration: "约22-24小时（两天）", cost: "约250-350元", pros: ["价格最便宜", "直达稻城县"], cons: ["耗时最长", "需在康定住宿一晚", "舒适度低"] }
+          ]
+        },
+        itineraries: [
+          { days: 3, title: "高原油菜游", highlights: ["稻城白塔", "冲古寺", "珍珠海"], bestFor: "初次高反" },
+          { days: 5, title: "经典挑战", highlights: ["牛奶海", "五色海", "洛绒牛场", "稻城古镇"], bestFor: "体力充沛者" }
+        ],
+        food: {
+          localSpecialties: [
+            { name: "牦牛肉火锅", price: "70-100元/人", reason: "高原特色，肉质鲜嫩，滋补养生" },
+            { name: "腊猪蹄汤锅", price: "60-80元/人", reason: "当地特色，汤浓肉香" },
+            { name: "藏香猪", price: "80-120元/人", reason: "高原特色，肉质独特" },
+            { name: "高原鳕鱼", price: "60-80元/人", reason: "亚丁特色鱼种，肉质细嫩" },
+            { name: "藏式土鸡汤", price: "50-70元/人", reason: "滋补养生，高原特色" }
+          ],
+          popularSnacks: [
+            { name: "青稞饼", price: "10-20元/个", reason: "藏族传统主食" },
+            { name: "酥油茶", price: "15-25元/杯", reason: "藏族传统饮品，可缓解高反" },
+            { name: "酸奶", price: "15-25元/杯", reason: "当地自制酸奶" },
+            { name: "牦牛肉干", price: "50-80元/袋", reason: "高原特色，可作为伴手礼" },
+            { name: "藏式麻花", price: "15-25元/份", reason: "特色小吃" }
+          ],
+          valueRestaurants: [
+            { name: "百家乐饭店", price: "40-60元/人", location: "稻城县城", reason: "当地风味餐厅榜No.1，评分5.0" },
+            { name: "舌尖上的腊猪蹄汤锅·牦牛火锅", price: "60-80元/人", location: "稻城县城", reason: "评分4.6，腊猪蹄汤锅特色" },
+            { name: "火塘人家文化主题餐厅", price: "70-90元/人", location: "稻城县城", reason: "文化主题体验，氛围独特" },
+            { name: "藏酷火锅", price: "60-80元/人", location: "稻城县城", reason: "藏式火锅代表" },
+            { name: "阿妈味道餐厅", price: "50-70元/人", location: "稻城县城", reason: "家常味道，价格实惠" }
+          ]
+        },
+        hotels: {
+          economy: [
+            { name: "稻城ACE假期酒店(稻城亚丁景区店)", price: "150-280元/晚", location: "稻城亚丁游客中心", advantage: "评分4.6；性价比高；位置便利" },
+            { name: "香巴拉民宿(稻城亚丁游客中心店)", price: "120-250元/晚", location: "稻城亚丁游客中心", advantage: "原汁原味藏族风格；价格实惠" },
+            { name: "稻城亚丁平常客客栈", price: "100-200元/晚", location: "稻城县城", advantage: "经济实惠；位置便利" }
+          ],
+          midRange: [
+            { name: "匠心·千秋雪(稻城亚丁景区店)", price: "300-500元/晚", location: "亚丁景区", advantage: "2024年新开业；评分4.8；位置优越" },
+            { name: "止山下酒店(稻城亚丁景区亚丁村店)", price: "350-550元/晚", location: "亚丁村", advantage: "2024年新开业；评分4.7；景区内位置" },
+            { name: "稻城栖山悦雪山酒店(亚丁景区亚丁村店)", price: "300-500元/晚", location: "亚丁村", advantage: "评分4.7；雪山景观" }
+          ],
+          luxury: [
+            { name: "松赞亚丁山居", price: "1500-3000元/晚", location: "亚丁村", advantage: "顶级精品酒店；评分4.7；绝美景观" },
+            { name: "稻城亚丁摩梵星辰酒店", price: "800-1500元/晚", location: "亚丁景区", advantage: "高端度假体验；星空观测佳" },
+            { name: "知白艺术酒店(稻城亚丁景区亚丁村店)", price: "600-1200元/晚", location: "亚丁村", advantage: "艺术设计；独特体验" }
+          ]
+        }
+      },
+      {
+        id: 6,
+        name: "桂林阳朔",
+        englishName: "Guilin Yangshuo",
+        popularityScore: 90,
+        coverImage: "images/guilin-yangshuo-karst-mountains-sunset-reflection.jpg",
+        description: "山水甲天下，泛舟漓江的诗意生活",
+        highlight: "漓江竹筏 · 西街夜景 · 十里画廊",
+        transport: {
+          methods: [
+            { type: "飞机", duration: "约1.5小时（成都双流机场直飞桂林两江机场）", cost: "淡季约300-500元，旺季约500-900元", pros: ["最快速", "机场大巴可到阳朔（约1.5小时）"], cons: ["需再转车到阳朔", "航班时间受限"] },
+            { type: "高铁", duration: "约5-6小时（成都东站直达桂林站/桂林北站）+桂林到阳朔约1小时", cost: "约400-600元", pros: ["舒适度高", "票价稳定", "可直达桂林再转阳朔"], cons: ["耗时较长", "需中转"] },
+            { type: "自驾", duration: "约10-12小时（约800公里）", cost: "过路费约400-500元+油费约400-500元，总计约800-1000元", pros: ["自由度最高", "沿途可游览", "自驾游热门路线"], cons: ["耗时较长", "长途驾驶疲劳"] },
+            { type: "大巴", duration: "约12-15小时", cost: "约300-400元", pros: ["价格适中", "可直接到阳朔"], cons: ["耗时最长", "舒适度一般"] }
+          ]
+        },
+        itineraries: [
+          { days: 3, title: "山水精华", highlights: ["漓江竹筏", "象鼻山", "两江四湖", "西街"], bestFor: "休闲游" },
+          { days: 5, title: "深度漫游", highlights: ["十里画廊", "遇龙河", "龙脊梯田", "阳朔西街"], bestFor: "深度体验" }
+        ],
+        food: {
+          localSpecialties: [
+            { name: "啤酒鱼", price: "60-80元/人", reason: "阳朔招牌菜，以啤酒烹调鲜鱼，风味独特" },
+            { name: "桂林米粉", price: "15-30元/人", reason: "桂林代表美食，阳朔随处可见" },
+            { name: "田螺酿", price: "40-60元/人", reason: "阳朔特色，螺肉酿制" },
+            { name: "漓江虾", price: "50-70元/人", reason: "漓江特色水产" },
+            { name: "荔浦芋头扣肉", price: "50-70元/人", reason: "桂林传统名菜" }
+          ],
+          popularSnacks: [
+            { name: "艾叶粑粑", price: "5-10元/个", reason: "阳朔传统小吃，艾叶制成" },
+            { name: "油茶", price: "10-20元/碗", reason: "桂林特色饮品" },
+            { name: "桂花糕", price: "10-20元/份", reason: "桂林特产，桂花香甜" },
+            { name: "马蹄糕", price: "8-15元/份", reason: "传统甜品" },
+            { name: "松花糖", price: "15-25元/袋", reason: "阳朔特色糖果" }
+          ],
+          valueRestaurants: [
+            { name: "大师傅金奖啤酒鱼(西街口总店)", price: "60-80元/人", location: "西街口", reason: "评分4.7，上过《天天饮食》，啤酒鱼正宗" },
+            { name: "春记公司", price: "50-70元/人", location: "西街/阳朔公园区", reason: "评分4.3，价格实惠" },
+            { name: "江景餐厅", price: "60-80元/人", location: "西街漓江边", reason: "漓江风光；位置优越" },
+            { name: "椿记烧鹅(阳朔店)", price: "50-70元/人", location: "阳朔县城", reason: "本地著名烧鹅连锁，皮脆肉嫩" },
+            { name: "一尺稻田咖啡", price: "30-50元/人", location: "遇龙河国家级旅游度假区", reason: "田园风光；休闲好去处" }
+          ]
+        },
+        hotels: {
+          economy: [
+            { name: "喜见酒店(阳朔西街店)", price: "150-280元/晚", location: "阳朔西街", advantage: "2024年新开业；评分4.8；位置便利" },
+            { name: "阳朔山与城度假酒店(千古情西街店)", price: "180-320元/晚", location: "千古情/西街", advantage: "评分4.6；位置便利；性价比高" },
+            { name: "遇龙家誉酒店(阳朔遇龙河景区金龙巡游店)", price: "200-350元/晚", location: "遇龙河景区", advantage: "2024年新开业；评分4.8；田园风光" }
+          ],
+          midRange: [
+            { name: "阳朔水云阁酒店", price: "350-550元/晚", location: "阳朔镇", advantage: "河畔景观；位置便利" },
+            { name: "阳朔新西街国际度假酒店", price: "300-500元/晚", location: "西街", advantage: "国际度假酒店；位置优越" },
+            { name: "碧莲江景大酒店(阳朔西街漓江店)", price: "350-600元/晚", location: "西街漓江边", advantage: "江景房；位置极佳" }
+          ],
+          luxury: [
+            { name: "阳朔悦榕庄", price: "2000-5000元/晚", location: "福利镇", advantage: "国际顶级品牌；漓江山水；极致体验" },
+            { name: "阳朔糖舍度假酒店", price: "1500-3000元/晚", location: "阳朔县城", advantage: "知名设计酒店；老糖厂改造；独特体验" },
+            { name: "阳朔水岸花园酒店", price: "800-1500元/晚", location: "遇龙河", advantage: "河畔度假；环境优美" }
+          ]
+        }
+      }
+    ];
+
+    let currentDestination = null;
+    let currentItineraryFilter = 'all';
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const destinationId = urlParams.get('id');
+        if (destinationId) {
+            const dest = destinations.find(d => d.id === parseInt(destinationId));
+            if (dest) showDetail(dest);
+            else showHome();
+        } else {
+            showHome();
+        }
+        window.addEventListener('scroll', handleScroll);
+    });
+
+    function showHome() {
+        window.history.pushState({}, '', window.location.pathname);
+        document.getElementById('homePage').style.display = 'block';
+        document.getElementById('detailPage').style.display = 'none';
+        document.getElementById('backBtn').style.display = 'none';
+        renderDestinations();
+        window.scrollTo(0, 0);
+    }
+
+    function renderDestinations() {
+        const grid = document.getElementById('destinationsGrid');
+        const sorted = [...destinations].sort((a, b) => b.popularityScore - a.popularityScore);
+        grid.innerHTML = sorted.map(dest => `
+            <article class="destination-card" onclick="showDetailById(${dest.id})">
+                <div class="card-image-wrapper">
+                    <img class="card-image" src="${dest.coverImage}" alt="${dest.name}" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #E0F2FE, #F0FDF4)'">
+                    <div class="card-hot-badge"><span>🔥</span><span>${dest.popularityScore}%</span></div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">${dest.name}<span class="card-title-en">${dest.englishName}</span></h3>
+                    <p class="card-desc">${dest.description}</p>
+                    <div class="card-highlight">${dest.highlight.split('·').map(h => `<span class="highlight-tag">${h}</span>`).join('')}</div>
+                </div>
+            </article>
+        `).join('');
+    }
+
+    function showDetailById(id) {
+        const dest = destinations.find(d => d.id === id);
+        if (dest) showDetail(dest);
+    }
+
+    function showDetail(dest) {
+        currentDestination = dest;
+        currentItineraryFilter = 'all';
+        window.history.pushState({}, '', `?id=${dest.id}`);
+        document.getElementById('homePage').style.display = 'none';
+        document.getElementById('detailPage').style.display = 'block';
+        document.getElementById('backBtn').style.display = 'flex';
+        renderDetailHeader(dest);
+        renderTransport(dest);
+        renderItineraries(dest);
+        renderFood(dest);
+        renderHotels(dest);
+        window.scrollTo(0, 0);
+    }
+
+    function renderDetailHeader(dest) {
+        document.getElementById('detailCover').src = dest.coverImage;
+        document.getElementById('detailTitle').textContent = dest.name;
+        document.getElementById('detailDesc').textContent = dest.description;
+        document.getElementById('detailHighlight').innerHTML = dest.highlight.split('·').map(h => `<span class="highlight-tag">${h}</span>`).join('');
+    }
+
+    const transportIcons = { '飞机': '✈️', '高铁': '🚄', '自驾': '🚗', '大巴': '🚌', '自驾/大巴': '🚐' };
+
+    function renderTransport(dest) {
+        const grid = document.getElementById('transportGrid');
+        grid.innerHTML = dest.transport.methods.map(m => `
+            <div class="transport-card">
+                <div class="transport-type">${transportIcons[m.type]||'🚐'} ${m.type}</div>
+                <div class="transport-info">
+                    <p><span class="info-label">耗时</span><span class="info-value">${m.duration}</span></p>
+                    <p><span class="info-label">费用</span><span class="info-value">${m.cost}</span></p>
+                </div>
+                <div class="pros-item">✓ ${m.pros.join('，')}</div>
+                <div class="cons-item">✗ ${m.cons.join('，')}</div>
+            </div>
+        `).join('');
+    }
+
+    function renderItineraries(dest) {
+        const tabsContainer = document.getElementById('itineraryTabs');
+        let tabsHTML = '<button class="itinerary-tab active" data-days="all">全部方案</button>';
+        dest.itineraries.forEach((it, index) => {
+            tabsHTML += `<button class="itinerary-tab" data-days="${index}">${it.days}天${it.title}</button>`;
+        });
+        tabsContainer.innerHTML = tabsHTML;
+        tabsContainer.querySelectorAll('.itinerary-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabsContainer.querySelectorAll('.itinerary-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentItineraryFilter = this.dataset.days;
+                renderItineraryCards(dest);
+            });
+        });
+        renderItineraryCards(dest);
+    }
+
+    function renderItineraryCards(dest) {
+        const list = document.getElementById('itineraryList');
+        let itinerariesToShow = dest.itineraries;
+        if (currentItineraryFilter !== 'all') itinerariesToShow = [dest.itineraries[currentItineraryFilter]];
+        list.innerHTML = itinerariesToShow.map(it => `
+            <div class="itinerary-card">
+                <div class="itinerary-header">
+                    <div class="itinerary-days">${it.days}天${it.title}</div>
+                    <div class="itinerary-best-for">适合：${it.bestFor}</div>
+                </div>
+                <div class="itinerary-body">
+                    <div class="itinerary-highlights">${it.highlights.map(h => `<span class="itinerary-highlight-tag">${h}</span>`).join('')}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderFood(dest) {
+        document.getElementById('localFood').innerHTML = dest.food.localSpecialties.map(f => `
+            <li class="food-item"><div><div class="food-name">${f.name}</div><div class="food-reason">${f.reason}</div></div><div class="food-price">${f.price}</div></li>
+        `).join('');
+        document.getElementById('snacks').innerHTML = dest.food.popularSnacks.map(f => `
+            <li class="food-item"><div><div class="food-name">${f.name}</div><div class="food-reason">${f.reason}</div></div><div class="food-price">${f.price}</div></li>
+        `).join('');
+        document.getElementById('valueFood').innerHTML = dest.food.valueRestaurants.map(f => `
+            <li class="food-item"><div><div class="food-name">${f.name}</div><div class="food-reason">${f.reason}</div></div><div class="food-price">${f.price}</div></li>
+        `).join('');
+    }
+
+    function renderHotels(dest) {
+        document.getElementById('economyHotels').innerHTML = dest.hotels.economy.map(h => `
+            <div class="hotel-item"><div class="hotel-name">${h.name}</div><div class="hotel-location">📍 ${h.location}</div><div class="hotel-price">${h.price}</div><div class="hotel-features"><span class="hotel-feature">${h.advantage}</span></div></div>
+        `).join('');
+        document.getElementById('midHotels').innerHTML = dest.hotels.midRange.map(h => `
+            <div class="hotel-item"><div class="hotel-name">${h.name}</div><div class="hotel-location">📍 ${h.location}</div><div class="hotel-price">${h.price}</div><div class="hotel-features"><span class="hotel-feature">${h.advantage}</span></div></div>
+        `).join('');
+        document.getElementById('luxuryHotels').innerHTML = dest.hotels.luxury.map(h => `
+            <div class="hotel-item"><div class="hotel-name">${h.name}</div><div class="hotel-location">📍 ${h.location}</div><div class="hotel-price">${h.price}</div><div class="hotel-features"><span class="hotel-feature">${h.advantage}</span></div></div>
+        `).join('');
+    }
+
+    function handleScroll() {
+        const backToTop = document.getElementById('backToTop');
+        if (window.scrollY > 500) backToTop.classList.add('visible');
+        else backToTop.classList.remove('visible');
+    }
+
+    window.addEventListener('popstate', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const destinationId = urlParams.get('id');
+        if (destinationId) {
+            const dest = destinations.find(d => d.id === parseInt(destinationId));
+            if (dest) showDetail(dest);
+            else showHome();
+        } else {
+            showHome();
+        }
+    });
+    </script>
+
+<script>
+/**
+ * Iframe 元素高亮注入脚本
+ * 需要在目标网站中引入此脚本来支持跨域 iframe 高亮功能
+ *
+ * 使用方法：
+ * 1. 将此脚本添加到目标网站的 HTML 中
+ * 2. 或通过浏览器扩展、用户脚本等方式注入
+ */
+
+(function () {
+  "use strict";
+
+  // 检查是否在 iframe 中
+  if (window.self === window.top) {
+    return; // 不在 iframe 中，不执行
+  }
+
+  // 检查是否已经初始化过
+  if (window.__iframeHighlightInitialized) {
+    return;
+  }
+  window.__iframeHighlightInitialized = true;
+  console.log("Iframe 高亮脚本已加载");
+
+  // 创建高亮覆盖层
+  var overlay = document.createElement("div");
+  overlay.id = "iframe-highlight-overlay";
+  overlay.style.cssText = "\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n    pointer-events: none;\n    z-index: 999999;\n    overflow: hidden;\n  ";
+
+  // 创建悬停高亮框（虚线边框）
+  var highlightBox = document.createElement("div");
+  highlightBox.id = "iframe-highlight-box";
+  highlightBox.style.cssText = "\n    position: absolute;\n    border: 2px dashed #007AFF;\n    background: rgba(0, 122, 255, 0.08);\n    pointer-events: none;\n    display: none;\n    transition: all 0.1s ease;\n    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8);\n    border-radius: 2px;\n  ";
+
+  // 创建选中节点的常驻高亮框（实线边框）
+  var selectedBox = document.createElement("div");
+  selectedBox.id = "iframe-selected-box";
+  selectedBox.style.cssText = "\n    position: absolute;\n    border: 2px solid #007AFF;\n    pointer-events: none;\n    display: none;\n    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 107, 53, 0.4);\n    border-radius: 2px;\n    z-index: 1000000;\n  ";
+
+  // 创建悬停标签显示
+  var tagLabel = document.createElement("div");
+  tagLabel.id = "iframe-tag-label";
+  tagLabel.style.cssText = "\n    position: absolute;\n    background: #007AFF;\n    color: white;\n    padding: 2px 6px;\n    font-size: 11px;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\n    border-radius: 2px;\n    pointer-events: none;\n    display: none;\n    white-space: nowrap;\n    z-index: 1000001;\n    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);\n    font-weight: 500;\n  ";
+
+  // 创建选中节点标签
+  var selectedLabel = document.createElement("div");
+  selectedLabel.id = "iframe-selected-label";
+  selectedLabel.style.cssText = "\n    position: absolute;\n    background: #007AFF;\n    color: white;\n    padding: 3px 8px;\n    font-size: 11px;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\n    border-radius: 3px;\n    pointer-events: none;\n    display: none;\n    white-space: nowrap;\n    z-index: 1000002;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);\n    font-weight: 600;\n  ";
+  overlay.appendChild(highlightBox);
+  overlay.appendChild(selectedBox);
+  overlay.appendChild(tagLabel);
+  overlay.appendChild(selectedLabel);
+  document.body.appendChild(overlay);
+
+  // 存储当前选中的元素
+  var selectedElement = null;
+  var highlightEnabled = false;
+
+  // 更新选中元素的高亮显示
+  function updateSelectedHighlight(element) {
+    console.log("updateSelectedHighlight called with:", element);
+    if (!element) {
+      selectedBox.style.display = "none";
+      selectedLabel.style.display = "none";
+      selectedElement = null;
+      console.log("Cleared selected highlight");
+      return;
+    }
+    selectedElement = element;
+    var rect = element.getBoundingClientRect();
+    console.log("Selected element rect:", rect);
+
+    // 更新选中高亮框位置
+    selectedBox.style.display = "block";
+    selectedBox.style.left = "".concat(rect.left - 2, "px");
+    selectedBox.style.top = "".concat(rect.top - 2, "px");
+    selectedBox.style.width = "".concat(rect.width + 4, "px");
+    selectedBox.style.height = "".concat(rect.height + 4, "px");
+
+    // 更新选中标签位置和内容
+    selectedLabel.style.display = "block";
+    selectedLabel.textContent = "\u2713 <".concat(element.tagName.toLowerCase(), ">");
+
+    // 计算标签位置，确保不超出视窗
+    var labelTop = rect.top - 28;
+    var labelLeft = rect.left;
+
+    // 如果标签会超出顶部，显示在元素下方
+    if (labelTop < 5) {
+      labelTop = rect.bottom + 5;
+    }
+
+    // 如果标签会超出右侧，向左调整
+    var labelWidth = selectedLabel.offsetWidth || 100; // 预估宽度
+    if (labelLeft + labelWidth > window.innerWidth - 10) {
+      labelLeft = window.innerWidth - labelWidth - 10;
+    }
+    selectedLabel.style.left = "".concat(Math.max(5, labelLeft), "px");
+    selectedLabel.style.top = "".concat(labelTop, "px");
+    console.log("Selected highlight positioned at:", {
+      left: selectedBox.style.left,
+      top: selectedBox.style.top,
+      width: selectedBox.style.width,
+      height: selectedBox.style.height
+    });
+  }
+  function getElementSelector(element) {
+    if (!(element instanceof Element)) throw new Error('Argument must be a DOM element');
+    var segments = [];
+    var current = element;
+    while (current !== document.documentElement) {
+      var selector = '';
+      // 优先检查唯一ID
+      if (current.id && document.querySelectorAll("#".concat(current.id)).length === 1) {
+        segments.unshift("#".concat(current.id));
+        break; // ID唯一，无需继续向上
+      }
+
+      // 生成类名选择器（取第一个有效类名）
+      var classes = Array.from(current.classList).filter(function (c) {
+        return !c.startsWith('js-');
+      });
+      var className = classes.length > 0 ? ".".concat(classes[0]) : '';
+
+      // 生成位置索引（nth-child）
+      var tag = current.tagName.toLowerCase();
+      if (!className) {
+        var siblings = Array.from(current.parentNode.children);
+        var index = siblings.findIndex(function (el) {
+          return el === current;
+        }) + 1;
+        selector = "".concat(tag, ":nth-child(").concat(index, ")");
+      } else {
+        selector = className;
+      }
+      segments.unshift(selector);
+      current = current.parentElement;
+    }
+
+    // 处理根元素
+    if (current === document.documentElement) {
+      segments.unshift('html');
+    }
+    return segments.join(' > ');
+  }
+
+  // 获取元素文本内容
+  function getElementText(element) {
+    var _element$textContent;
+    if (element.tagName === "INPUT") {
+      return element.value || element.placeholder || "";
+    }
+    if (element.tagName === "TEXTAREA") {
+      return element.value || element.placeholder || "";
+    }
+    var text = ((_element$textContent = element.textContent) === null || _element$textContent === void 0 ? void 0 : _element$textContent.trim()) || "";
+    return text.length > 50 ? text.substring(0, 50) + "..." : text;
+  }
+
+  // 获取元素属性信息
+  function getElementAttributes(element) {
+    var attrs = {};
+    for (var i = 0; i < element.attributes.length; i++) {
+      var attr = element.attributes[i];
+      attrs[attr.name] = attr.value;
+    }
+    return attrs;
+  }
+
+  // 鼠标悬停事件处理
+  function handleMouseOver(e) {
+    if (!highlightEnabled) return;
+    var target = e.target;
+    if (!target || target === overlay || target === highlightBox || target === tagLabel || target === selectedBox || target === selectedLabel) {
+      return;
+    }
+
+    // 避免高亮 html 和 body 元素
+    if (target === document.documentElement || target === document.body) {
+      return;
+    }
+
+    // 如果是已选中的元素，不显示悬停高亮
+    if (target === selectedElement) {
+      highlightBox.style.display = "none";
+      tagLabel.style.display = "none";
+      return;
+    }
+    var rect = target.getBoundingClientRect();
+    var selector = getElementSelector(target);
+    var text = getElementText(target);
+    var attributes = getElementAttributes(target);
+
+    // 更新悬停高亮框位置
+    highlightBox.style.display = "block";
+    highlightBox.style.left = "".concat(rect.left - 2, "px");
+    highlightBox.style.top = "".concat(rect.top - 2, "px");
+    highlightBox.style.width = "".concat(rect.width + 4, "px");
+    highlightBox.style.height = "".concat(rect.height + 4, "px");
+
+    // 更新标签位置和内容
+    tagLabel.style.display = "block";
+    tagLabel.textContent = "<".concat(target.tagName.toLowerCase(), ">");
+
+    // 计算标签位置，确保不超出视窗
+    var labelTop = rect.top - 22;
+    var labelLeft = rect.left;
+
+    // 如果标签会超出顶部，显示在元素下方
+    if (labelTop < 0) {
+      labelTop = rect.bottom + 5;
+    }
+
+    // 如果标签会超出右侧，向左调整
+    if (labelLeft + tagLabel.offsetWidth > window.innerWidth) {
+      labelLeft = window.innerWidth - tagLabel.offsetWidth - 5;
+    }
+    tagLabel.style.left = "".concat(Math.max(0, labelLeft), "px");
+    tagLabel.style.top = "".concat(labelTop, "px");
+
+    // 发送消息到父窗口
+    var elementInfo = {
+      tagName: target.tagName.toLowerCase(),
+      rect: {
+        left: rect.left,
+        top: rect.top,
+        right: rect.right,
+        bottom: rect.bottom,
+        width: rect.width,
+        height: rect.height,
+        x: rect.x,
+        y: rect.y
+      },
+      selector: selector,
+      text: text,
+      attributes: attributes,
+      url: window.location.href,
+      path: window.location.pathname,
+      timestamp: Date.now()
+    };
+    try {
+      window.parent.postMessage({
+        type: "iframe-element-hover",
+        data: elementInfo,
+        source: "iframe-highlight-injector"
+      }, "*");
+    } catch (error) {
+      console.warn("无法发送消息到父窗口:", error);
+    }
+  }
+
+  // 鼠标离开事件处理
+  function handleMouseOut(e) {
+    if (!highlightEnabled) return;
+    var relatedTarget = e.relatedTarget;
+
+    // 如果鼠标移动到高亮相关元素上，不隐藏高亮
+    if (relatedTarget && (relatedTarget === highlightBox || relatedTarget === tagLabel || relatedTarget === overlay || relatedTarget === selectedBox || relatedTarget === selectedLabel)) {
+      return;
+    }
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    try {
+      window.parent.postMessage({
+        type: "iframe-element-hover",
+        data: null,
+        source: "iframe-highlight-injector"
+      }, "*");
+    } catch (error) {
+      console.warn("无法发送消息到父窗口:", error);
+    }
+  }
+
+  // 点击事件处理
+  function handleClick(e) {
+    var target = e.target;
+    if (!target || target === overlay || target === highlightBox || target === tagLabel || target === selectedBox || target === selectedLabel) {
+      return;
+    }
+
+    // 避免处理 html 和 body 元素
+    if (target === document.documentElement || target === document.body) {
+      return;
+    }
+
+    // 检查是否是交互元素，这些元素需要保留默认行为
+    var isInteractiveElement = ['input', 'textarea', 'select', 'button', 'a'].includes(target.tagName.toLowerCase());
+
+    // 如果高亮功能启用，对于非交互元素阻止默认行为和事件传播
+    if (highlightEnabled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    var rect = target.getBoundingClientRect();
+    var selector = getElementSelector(target);
+    var text = getElementText(target);
+    var attributes = getElementAttributes(target);
+    console.log("Element clicked:", {
+      tagName: target.tagName,
+      selector: selector,
+      rect: rect
+    });
+
+    // 立即更新选中高亮
+    updateSelectedHighlight(target);
+
+    // 隐藏悬停高亮，因为现在是选中状态
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    var elementInfo = {
+      tagName: target.tagName.toLowerCase(),
+      rect: {
+        left: rect.left,
+        top: rect.top,
+        right: rect.right,
+        bottom: rect.bottom,
+        width: rect.width,
+        height: rect.height,
+        x: rect.x,
+        y: rect.y
+      },
+      selector: selector,
+      text: text,
+      attributes: attributes,
+      url: window.location.href,
+      path: window.location.pathname,
+      timestamp: Date.now()
+    };
+    try {
+      window.parent.postMessage({
+        type: "iframe-element-click",
+        data: elementInfo,
+        source: "iframe-highlight-injector"
+      }, "*");
+    } catch (error) {
+      console.warn("无法发送消息到父窗口:", error);
+    }
+  }
+
+  // 监听来自父窗口的消息
+  function handleParentMessage(event) {
+    console.log("Received message from parent:", event.data);
+    if (event.data.type === "iframe-highlight-toggle") {
+      var enabled = event.data.enabled;
+      console.log("Highlight toggle:", enabled);
+      if (enabled) {
+        enableHighlight();
+      } else {
+        disableHighlight();
+      }
+    } else if (event.data.type === "enable-iframe-highlight") {
+      console.log("Enable iframe highlight");
+      enableHighlight();
+    } else if (event.data.type === "disable-iframe-highlight") {
+      console.log("Disable iframe highlight");
+      disableHighlight();
+    } else if (event.data.type === "toggle-iframe-highlight") {
+      var _enabled = event.data.enabled !== undefined ? event.data.enabled : !highlightEnabled;
+      console.log("Toggle iframe highlight to:", _enabled);
+      if (_enabled) {
+        enableHighlight();
+      } else {
+        disableHighlight();
+      }
+    } else if (event.data.type === "update-selected-element") {
+      var selector = event.data.selector;
+      console.log("Update selected element with selector:", selector);
+      if (selector) {
+        try {
+          var element = document.querySelector(selector);
+          console.log("Found element by selector:", element);
+          updateSelectedHighlight(element);
+        } catch (error) {
+          console.warn("Failed to select element:", error);
+          updateSelectedHighlight(null);
+        }
+      } else {
+        updateSelectedHighlight(null);
+      }
+    } else if (event.data.type === "clear-selected-element") {
+      console.log("Clear selected element");
+      updateSelectedHighlight(null);
+    }
+  }
+
+  // 启用高亮功能
+  function enableHighlight() {
+    console.log("Enabling highlight");
+    document.addEventListener("mouseover", handleMouseOver, true);
+    document.addEventListener("mouseout", handleMouseOut, true);
+    document.addEventListener("click", handleClick, true);
+    highlightEnabled = true;
+    overlay.style.display = "block";
+  }
+
+  // 禁用高亮功能
+  function disableHighlight() {
+    console.log("Disabling highlight");
+    highlightEnabled = false;
+    // 保持事件监听器，但通过 highlightEnabled 变量控制行为
+    // 这样可以保留选中状态的显示
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    // 不隐藏 selectedBox 和 selectedLabel，保留选中状态
+  }
+
+  // 完全禁用高亮功能（移除所有监听器）
+  function fullyDisableHighlight() {
+    console.log("Fully disabling highlight");
+    highlightEnabled = false;
+    document.removeEventListener("mouseover", handleMouseOver, true);
+    document.removeEventListener("mouseout", handleMouseOut, true);
+    document.removeEventListener("click", handleClick, true);
+    overlay.style.display = "none";
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    selectedBox.style.display = "none";
+    selectedLabel.style.display = "none";
+  }
+
+  // 添加事件监听
+  enableHighlight();
+  window.addEventListener("message", handleParentMessage);
+
+  // 暴露全局函数供外部调用
+  window.__iframeHighlightControl = {
+    enable: enableHighlight,
+    disable: disableHighlight,
+    fullyDisable: fullyDisableHighlight,
+    isEnabled: function isEnabled() {
+      return highlightEnabled;
+    },
+    getSelectedElement: function getSelectedElement() {
+      return selectedElement;
+    },
+    updateSelected: updateSelectedHighlight,
+    // 通过消息发送开关控制
+    sendToggleMessage: function sendToggleMessage(enabled) {
+      window.parent.postMessage({
+        type: 'iframe-highlight-status',
+        enabled: enabled || highlightEnabled,
+        source: 'iframe-highlight-injector'
+      }, '*');
+    }
+  };
+
+  // 通知父窗口脚本已加载
+  try {
+    window.parent.postMessage({
+      type: "iframe-highlight-ready",
+      data: {
+        url: window.location.href,
+        userAgent: navigator.userAgent,
+        timestamp: Date.now()
+      },
+      source: "iframe-highlight-injector"
+    }, "*");
+  } catch (error) {
+    console.warn("无法发送就绪消息到父窗口:", error);
+  }
+
+  // 清理函数
+  window.__iframeHighlightCleanup = function () {
+    fullyDisableHighlight();
+    window.removeEventListener("message", handleParentMessage);
+    if (overlay.parentElement) {
+      overlay.parentElement.removeChild(overlay);
+    }
+    delete window.__iframeHighlightInitialized;
+    delete window.__iframeHighlightCleanup;
+  };
+})();
+
+</script>
+
+<script>
+/**
+ * Iframe 元素高亮注入脚本
+ * 需要在目标网站中引入此脚本来支持跨域 iframe 高亮功能
+ *
+ * 使用方法：
+ * 1. 将此脚本添加到目标网站的 HTML 中
+ * 2. 或通过浏览器扩展、用户脚本等方式注入
+ */
+
+(function () {
+  "use strict";
+
+  // 检查是否在 iframe 中
+  if (window.self === window.top) {
+    return; // 不在 iframe 中，不执行
+  }
+
+  // 检查是否已经初始化过
+  if (window.__iframeHighlightInitialized) {
+    return;
+  }
+  window.__iframeHighlightInitialized = true;
+  console.log("Iframe 高亮脚本已加载");
+
+  // 创建高亮覆盖层
+  var overlay = document.createElement("div");
+  overlay.id = "iframe-highlight-overlay";
+  overlay.style.cssText = "\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n    pointer-events: none;\n    z-index: 999999;\n    overflow: hidden;\n  ";
+
+  // 创建悬停高亮框（虚线边框）
+  var highlightBox = document.createElement("div");
+  highlightBox.id = "iframe-highlight-box";
+  highlightBox.style.cssText = "\n    position: absolute;\n    border: 2px dashed #007AFF;\n    background: rgba(0, 122, 255, 0.08);\n    pointer-events: none;\n    display: none;\n    transition: all 0.1s ease;\n    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8);\n    border-radius: 2px;\n  ";
+
+  // 创建选中节点的常驻高亮框（实线边框）
+  var selectedBox = document.createElement("div");
+  selectedBox.id = "iframe-selected-box";
+  selectedBox.style.cssText = "\n    position: absolute;\n    border: 2px solid #007AFF;\n    pointer-events: none;\n    display: none;\n    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 107, 53, 0.4);\n    border-radius: 2px;\n    z-index: 1000000;\n  ";
+
+  // 创建悬停标签显示
+  var tagLabel = document.createElement("div");
+  tagLabel.id = "iframe-tag-label";
+  tagLabel.style.cssText = "\n    position: absolute;\n    background: #007AFF;\n    color: white;\n    padding: 2px 6px;\n    font-size: 11px;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\n    border-radius: 2px;\n    pointer-events: none;\n    display: none;\n    white-space: nowrap;\n    z-index: 1000001;\n    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);\n    font-weight: 500;\n  ";
+
+  // 创建选中节点标签
+  var selectedLabel = document.createElement("div");
+  selectedLabel.id = "iframe-selected-label";
+  selectedLabel.style.cssText = "\n    position: absolute;\n    background: #007AFF;\n    color: white;\n    padding: 3px 8px;\n    font-size: 11px;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\n    border-radius: 3px;\n    pointer-events: none;\n    display: none;\n    white-space: nowrap;\n    z-index: 1000002;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);\n    font-weight: 600;\n  ";
+  overlay.appendChild(highlightBox);
+  overlay.appendChild(selectedBox);
+  overlay.appendChild(tagLabel);
+  overlay.appendChild(selectedLabel);
+  document.body.appendChild(overlay);
+
+  // 存储当前选中的元素
+  var selectedElement = null;
+  var highlightEnabled = false;
+
+  // 更新选中元素的高亮显示
+  function updateSelectedHighlight(element) {
+    console.log("updateSelectedHighlight called with:", element);
+    if (!element) {
+      selectedBox.style.display = "none";
+      selectedLabel.style.display = "none";
+      selectedElement = null;
+      console.log("Cleared selected highlight");
+      return;
+    }
+    selectedElement = element;
+    var rect = element.getBoundingClientRect();
+    console.log("Selected element rect:", rect);
+
+    // 更新选中高亮框位置
+    selectedBox.style.display = "block";
+    selectedBox.style.left = "".concat(rect.left - 2, "px");
+    selectedBox.style.top = "".concat(rect.top - 2, "px");
+    selectedBox.style.width = "".concat(rect.width + 4, "px");
+    selectedBox.style.height = "".concat(rect.height + 4, "px");
+
+    // 更新选中标签位置和内容
+    selectedLabel.style.display = "block";
+    selectedLabel.textContent = "\u2713 <".concat(element.tagName.toLowerCase(), ">");
+
+    // 计算标签位置，确保不超出视窗
+    var labelTop = rect.top - 28;
+    var labelLeft = rect.left;
+
+    // 如果标签会超出顶部，显示在元素下方
+    if (labelTop < 5) {
+      labelTop = rect.bottom + 5;
+    }
+
+    // 如果标签会超出右侧，向左调整
+    var labelWidth = selectedLabel.offsetWidth || 100; // 预估宽度
+    if (labelLeft + labelWidth > window.innerWidth - 10) {
+      labelLeft = window.innerWidth - labelWidth - 10;
+    }
+    selectedLabel.style.left = "".concat(Math.max(5, labelLeft), "px");
+    selectedLabel.style.top = "".concat(labelTop, "px");
+    console.log("Selected highlight positioned at:", {
+      left: selectedBox.style.left,
+      top: selectedBox.style.top,
+      width: selectedBox.style.width,
+      height: selectedBox.style.height
+    });
+  }
+  function getElementSelector(element) {
+    if (!(element instanceof Element)) throw new Error('Argument must be a DOM element');
+    var segments = [];
+    var current = element;
+    while (current !== document.documentElement) {
+      var selector = '';
+      // 优先检查唯一ID
+      if (current.id && document.querySelectorAll("#".concat(current.id)).length === 1) {
+        segments.unshift("#".concat(current.id));
+        break; // ID唯一，无需继续向上
+      }
+
+      // 生成类名选择器（取第一个有效类名）
+      var classes = Array.from(current.classList).filter(function (c) {
+        return !c.startsWith('js-');
+      });
+      var className = classes.length > 0 ? ".".concat(classes[0]) : '';
+
+      // 生成位置索引（nth-child）
+      var tag = current.tagName.toLowerCase();
+      if (!className) {
+        var siblings = Array.from(current.parentNode.children);
+        var index = siblings.findIndex(function (el) {
+          return el === current;
+        }) + 1;
+        selector = "".concat(tag, ":nth-child(").concat(index, ")");
+      } else {
+        selector = className;
+      }
+      segments.unshift(selector);
+      current = current.parentElement;
+    }
+
+    // 处理根元素
+    if (current === document.documentElement) {
+      segments.unshift('html');
+    }
+    return segments.join(' > ');
+  }
+
+  // 获取元素文本内容
+  function getElementText(element) {
+    var _element$textContent;
+    if (element.tagName === "INPUT") {
+      return element.value || element.placeholder || "";
+    }
+    if (element.tagName === "TEXTAREA") {
+      return element.value || element.placeholder || "";
+    }
+    var text = ((_element$textContent = element.textContent) === null || _element$textContent === void 0 ? void 0 : _element$textContent.trim()) || "";
+    return text.length > 50 ? text.substring(0, 50) + "..." : text;
+  }
+
+  // 获取元素属性信息
+  function getElementAttributes(element) {
+    var attrs = {};
+    for (var i = 0; i < element.attributes.length; i++) {
+      var attr = element.attributes[i];
+      attrs[attr.name] = attr.value;
+    }
+    return attrs;
+  }
+
+  // 鼠标悬停事件处理
+  function handleMouseOver(e) {
+    if (!highlightEnabled) return;
+    var target = e.target;
+    if (!target || target === overlay || target === highlightBox || target === tagLabel || target === selectedBox || target === selectedLabel) {
+      return;
+    }
+
+    // 避免高亮 html 和 body 元素
+    if (target === document.documentElement || target === document.body) {
+      return;
+    }
+
+    // 如果是已选中的元素，不显示悬停高亮
+    if (target === selectedElement) {
+      highlightBox.style.display = "none";
+      tagLabel.style.display = "none";
+      return;
+    }
+    var rect = target.getBoundingClientRect();
+    var selector = getElementSelector(target);
+    var text = getElementText(target);
+    var attributes = getElementAttributes(target);
+
+    // 更新悬停高亮框位置
+    highlightBox.style.display = "block";
+    highlightBox.style.left = "".concat(rect.left - 2, "px");
+    highlightBox.style.top = "".concat(rect.top - 2, "px");
+    highlightBox.style.width = "".concat(rect.width + 4, "px");
+    highlightBox.style.height = "".concat(rect.height + 4, "px");
+
+    // 更新标签位置和内容
+    tagLabel.style.display = "block";
+    tagLabel.textContent = "<".concat(target.tagName.toLowerCase(), ">");
+
+    // 计算标签位置，确保不超出视窗
+    var labelTop = rect.top - 22;
+    var labelLeft = rect.left;
+
+    // 如果标签会超出顶部，显示在元素下方
+    if (labelTop < 0) {
+      labelTop = rect.bottom + 5;
+    }
+
+    // 如果标签会超出右侧，向左调整
+    if (labelLeft + tagLabel.offsetWidth > window.innerWidth) {
+      labelLeft = window.innerWidth - tagLabel.offsetWidth - 5;
+    }
+    tagLabel.style.left = "".concat(Math.max(0, labelLeft), "px");
+    tagLabel.style.top = "".concat(labelTop, "px");
+
+    // 发送消息到父窗口
+    var elementInfo = {
+      tagName: target.tagName.toLowerCase(),
+      rect: {
+        left: rect.left,
+        top: rect.top,
+        right: rect.right,
+        bottom: rect.bottom,
+        width: rect.width,
+        height: rect.height,
+        x: rect.x,
+        y: rect.y
+      },
+      selector: selector,
+      text: text,
+      attributes: attributes,
+      url: window.location.href,
+      path: window.location.pathname,
+      timestamp: Date.now()
+    };
+    try {
+      window.parent.postMessage({
+        type: "iframe-element-hover",
+        data: elementInfo,
+        source: "iframe-highlight-injector"
+      }, "*");
+    } catch (error) {
+      console.warn("无法发送消息到父窗口:", error);
+    }
+  }
+
+  // 鼠标离开事件处理
+  function handleMouseOut(e) {
+    if (!highlightEnabled) return;
+    var relatedTarget = e.relatedTarget;
+
+    // 如果鼠标移动到高亮相关元素上，不隐藏高亮
+    if (relatedTarget && (relatedTarget === highlightBox || relatedTarget === tagLabel || relatedTarget === overlay || relatedTarget === selectedBox || relatedTarget === selectedLabel)) {
+      return;
+    }
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    try {
+      window.parent.postMessage({
+        type: "iframe-element-hover",
+        data: null,
+        source: "iframe-highlight-injector"
+      }, "*");
+    } catch (error) {
+      console.warn("无法发送消息到父窗口:", error);
+    }
+  }
+
+  // 点击事件处理
+  function handleClick(e) {
+    var target = e.target;
+    if (!target || target === overlay || target === highlightBox || target === tagLabel || target === selectedBox || target === selectedLabel) {
+      return;
+    }
+
+    // 避免处理 html 和 body 元素
+    if (target === document.documentElement || target === document.body) {
+      return;
+    }
+
+    // 检查是否是交互元素，这些元素需要保留默认行为
+    var isInteractiveElement = ['input', 'textarea', 'select', 'button', 'a'].includes(target.tagName.toLowerCase());
+
+    // 如果高亮功能启用，对于非交互元素阻止默认行为和事件传播
+    if (highlightEnabled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    var rect = target.getBoundingClientRect();
+    var selector = getElementSelector(target);
+    var text = getElementText(target);
+    var attributes = getElementAttributes(target);
+    console.log("Element clicked:", {
+      tagName: target.tagName,
+      selector: selector,
+      rect: rect
+    });
+
+    // 立即更新选中高亮
+    updateSelectedHighlight(target);
+
+    // 隐藏悬停高亮，因为现在是选中状态
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    var elementInfo = {
+      tagName: target.tagName.toLowerCase(),
+      rect: {
+        left: rect.left,
+        top: rect.top,
+        right: rect.right,
+        bottom: rect.bottom,
+        width: rect.width,
+        height: rect.height,
+        x: rect.x,
+        y: rect.y
+      },
+      selector: selector,
+      text: text,
+      attributes: attributes,
+      url: window.location.href,
+      path: window.location.pathname,
+      timestamp: Date.now()
+    };
+    try {
+      window.parent.postMessage({
+        type: "iframe-element-click",
+        data: elementInfo,
+        source: "iframe-highlight-injector"
+      }, "*");
+    } catch (error) {
+      console.warn("无法发送消息到父窗口:", error);
+    }
+  }
+
+  // 监听来自父窗口的消息
+  function handleParentMessage(event) {
+    console.log("Received message from parent:", event.data);
+    if (event.data.type === "iframe-highlight-toggle") {
+      var enabled = event.data.enabled;
+      console.log("Highlight toggle:", enabled);
+      if (enabled) {
+        enableHighlight();
+      } else {
+        disableHighlight();
+      }
+    } else if (event.data.type === "enable-iframe-highlight") {
+      console.log("Enable iframe highlight");
+      enableHighlight();
+    } else if (event.data.type === "disable-iframe-highlight") {
+      console.log("Disable iframe highlight");
+      disableHighlight();
+    } else if (event.data.type === "toggle-iframe-highlight") {
+      var _enabled = event.data.enabled !== undefined ? event.data.enabled : !highlightEnabled;
+      console.log("Toggle iframe highlight to:", _enabled);
+      if (_enabled) {
+        enableHighlight();
+      } else {
+        disableHighlight();
+      }
+    } else if (event.data.type === "update-selected-element") {
+      var selector = event.data.selector;
+      console.log("Update selected element with selector:", selector);
+      if (selector) {
+        try {
+          var element = document.querySelector(selector);
+          console.log("Found element by selector:", element);
+          updateSelectedHighlight(element);
+        } catch (error) {
+          console.warn("Failed to select element:", error);
+          updateSelectedHighlight(null);
+        }
+      } else {
+        updateSelectedHighlight(null);
+      }
+    } else if (event.data.type === "clear-selected-element") {
+      console.log("Clear selected element");
+      updateSelectedHighlight(null);
+    }
+  }
+
+  // 启用高亮功能
+  function enableHighlight() {
+    console.log("Enabling highlight");
+    document.addEventListener("mouseover", handleMouseOver, true);
+    document.addEventListener("mouseout", handleMouseOut, true);
+    document.addEventListener("click", handleClick, true);
+    highlightEnabled = true;
+    overlay.style.display = "block";
+  }
+
+  // 禁用高亮功能
+  function disableHighlight() {
+    console.log("Disabling highlight");
+    highlightEnabled = false;
+    // 保持事件监听器，但通过 highlightEnabled 变量控制行为
+    // 这样可以保留选中状态的显示
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    // 不隐藏 selectedBox 和 selectedLabel，保留选中状态
+  }
+
+  // 完全禁用高亮功能（移除所有监听器）
+  function fullyDisableHighlight() {
+    console.log("Fully disabling highlight");
+    highlightEnabled = false;
+    document.removeEventListener("mouseover", handleMouseOver, true);
+    document.removeEventListener("mouseout", handleMouseOut, true);
+    document.removeEventListener("click", handleClick, true);
+    overlay.style.display = "none";
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    selectedBox.style.display = "none";
+    selectedLabel.style.display = "none";
+  }
+
+  // 添加事件监听
+  enableHighlight();
+  window.addEventListener("message", handleParentMessage);
+
+  // 暴露全局函数供外部调用
+  window.__iframeHighlightControl = {
+    enable: enableHighlight,
+    disable: disableHighlight,
+    fullyDisable: fullyDisableHighlight,
+    isEnabled: function isEnabled() {
+      return highlightEnabled;
+    },
+    getSelectedElement: function getSelectedElement() {
+      return selectedElement;
+    },
+    updateSelected: updateSelectedHighlight,
+    // 通过消息发送开关控制
+    sendToggleMessage: function sendToggleMessage(enabled) {
+      window.parent.postMessage({
+        type: 'iframe-highlight-status',
+        enabled: enabled || highlightEnabled,
+        source: 'iframe-highlight-injector'
+      }, '*');
+    }
+  };
+
+  // 通知父窗口脚本已加载
+  try {
+    window.parent.postMessage({
+      type: "iframe-highlight-ready",
+      data: {
+        url: window.location.href,
+        userAgent: navigator.userAgent,
+        timestamp: Date.now()
+      },
+      source: "iframe-highlight-injector"
+    }, "*");
+  } catch (error) {
+    console.warn("无法发送就绪消息到父窗口:", error);
+  }
+
+  // 清理函数
+  window.__iframeHighlightCleanup = function () {
+    fullyDisableHighlight();
+    window.removeEventListener("message", handleParentMessage);
+    if (overlay.parentElement) {
+      overlay.parentElement.removeChild(overlay);
+    }
+    delete window.__iframeHighlightInitialized;
+    delete window.__iframeHighlightCleanup;
+  };
+})();
+
+</script>
+</body>
+</html>
